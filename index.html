@@ -1,0 +1,2910 @@
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="https://i.postimg.cc/13Xy2CKh/16a09bc24a9accc5ab65c675577242ce.png">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&family=Zhi+Mang+Xing&family=Long+Cang&family=Noto+Serif+SC:wght@300;600&display=swap" rel="stylesheet">
+<title>深深智能手机OS - V6.0 (修复增强版)</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&family=Long+Cang&family=Ma+Shan+Zheng&family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@300;600&display=swap" rel="stylesheet">
+<style>
+:root{--morandi-bg:#f2f2f7;--morandi-purple:#887b99;--morandi-blue-purple:rgba(136,123,153,0.65);--bubble-left:rgba(255,255,255,0.45);--line-text-color:#fff;--line-text-color-left:#333;--line-bottom-bg:rgba(255,253,208,0.3);--glass-blur:15px;--icon-size:60px;--app-radius:18px;--text-color:#333;--hand-font:'Long Cang','KaiTi',cursive;--serif-font:'Noto Serif SC',serif;--kraft-paper:#d4b483;--tarot-bg-color:#1a1a2e;--tarot-card-back:#240046;--tarot-moon:#4cc9f0;--tarot-accent:#e94560;--tarot-text:#fff;--tarot-note-bg:#fff1e0;--tarot-note-text:#333;--safe-top:max(50px,env(safe-area-inset-top));--safe-bottom:max(20px,env(safe-area-inset-bottom))}
+*{box-sizing:border-box;user-select:none;-webkit-tap-highlight-color:transparent;outline:none}
+body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(135deg,#c4bed4 0%,#e0c3fc 100%);background-size:cover;background-position:center;height:100vh;width:100vw;overflow:hidden;color:var(--text-color)}
+#phone-container{width:100%;height:100%;position:relative;display:flex;flex-direction:column;padding:var(--safe-top) 20px 20px 20px}
+.status-bar{text-align:center;margin-bottom:15px;margin-top:5px}
+.clock{font-size:52px;font-weight:300;color:#fff;text-shadow:0 2px 5px rgba(0,0,0,0.1)}
+.date{font-size:16px;color:rgba(255,255,255,0.9)}
+.music-widget{background:rgba(255,255,255,0.6);backdrop-filter:blur(10px);border-radius:20px;padding:12px;display:flex;align-items:center;margin-bottom:25px;box-shadow:0 4px 15px rgba(0,0,0,0.05)}
+.music-cover{width:50px;height:50px;border-radius:12px;background-size:cover;background-position:center;background-image:url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80');margin-right:15px}
+.music-info{flex:1}
+.music-title{font-size:14px;font-weight:600}.music-artist{font-size:12px;color:#666}.music-controls i{font-size:20px;color:#444;margin-left:10px}
+.app-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,auto);gap:20px 10px;flex:1;align-content:flex-start;overflow-y:auto;padding-bottom:20px}
+.app-item{display:flex;flex-direction:column;align-items:center;cursor:pointer;transition:transform 0.1s;justify-content:center}
+.app-item:active{transform:scale(0.9)}
+.app-icon{width:var(--icon-size);height:var(--icon-size);border-radius:var(--app-radius);background:#fff;display:flex;justify-content:center;align-items:center;font-size:28px;color:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1);margin-bottom:5px;background-size:cover;background-position:center;background-repeat:no-repeat;overflow:hidden}
+.app-name{font-size:11px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.2);text-align:center}
+.widget-item{grid-column:span 2;grid-row:span 2;width:100%;height:100%;min-height:160px;border-radius:25px;position:relative;overflow:hidden}
+.widget-memo{background:rgba(255,255,255,0.3);backdrop-filter:blur(10px);padding:15px;display:flex;flex-direction:column;box-shadow:0 4px 15px rgba(0,0,0,0.05);color:#333}
+.memo-title{font-size:12px;font-weight:bold;opacity:0.7;margin-bottom:5px;display:flex;align-items:center;gap:5px}
+.memo-content{flex:1;background:transparent;border:none;resize:none;font-size:14px;line-height:1.4;color:#333;font-family:inherit;outline:none;width:100%}
+.widget-couple{background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
+.couple-avatars{display:flex;align-items:center;justify-content:center;width:100%;position:relative;height:60px}
+.c-avatar{width:50px;height:50px;border-radius:50%;background-size:cover;background-position:center;background-repeat:no-repeat;border:2px solid #fff;background-color:rgba(255,255,255,0.2);z-index:2;cursor:pointer}
+.heartbeat-line{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:40px;z-index:1;pointer-events:none}
+.heartbeat-path{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 2px rgba(255,255,255,0.5))}
+.hollow-heart{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:16px;color:transparent;-webkit-text-stroke:1.5px #fff;z-index:3;animation:pulse 1.5s infinite}
+@keyframes pulse{0%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.2)}100%{transform:translate(-50%,-50%) scale(1)}}
+.couple-text{margin-top:10px;font-size:12px;font-weight:bold;text-shadow:0 1px 3px rgba(0,0,0,0.3);text-align:center;cursor:pointer}
+.couple-days{font-size:24px;font-family:'Arial',sans-serif}
+.widget-weather{grid-column:span 4;grid-row:span 1;min-height:80px;background:linear-gradient(135deg,rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.2) 100%);backdrop-filter:blur(10px);border-radius:20px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:0 25px;color:#fff;box-shadow:0 4px 15px rgba(0,0,0,0.05);margin-top:10px}
+.weather-left{display:flex;align-items:center;gap:15px}.weather-icon{font-size:32px;filter:drop-shadow(0 2px 5px rgba(0,0,0,0.2))}.weather-temp{font-size:28px;font-weight:300}.weather-right{text-align:right}.weather-loc{font-size:14px;font-weight:bold;margin-bottom:2px}.weather-desc{font-size:12px;opacity:0.9}
+.dock{background:rgba(255,255,255,0.65);backdrop-filter:blur(15px);border-radius:30px;margin-bottom:10px;padding:15px;display:flex;justify-content:space-around;align-items:center;box-shadow:0 5px 20px rgba(0,0,0,0.1)}
+.dock .app-name{display:none}.dock .app-icon{width:55px;height:55px;box-shadow:none;margin-bottom:0}
+.app-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;z-index:100;transform:translateY(100%);transition:transform 0.3s cubic-bezier(0.2,0.8,0.2,1);display:flex;flex-direction:column}
+.app-screen.active{transform:translateY(0)}
+.app-header{height:calc(var(--safe-top) + 44px);padding-top:var(--safe-top);padding-left:15px;padding-right:15px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,0.05);z-index:10;flex-shrink:0}
+.back-btn{font-size:16px;color:#333;cursor:pointer;display:flex;align-items:center;width:60px}.screen-title{font-weight:600;font-size:17px;text-align:center;flex:1}.header-right{width:60px;text-align:right;color:#333;font-size:20px;cursor:pointer;display:flex;justify-content:flex-end;align-items:center}
+.screen-content{flex:1;overflow-y:auto;position:relative}
+#screen-line{background-size:cover;background-position:center;display:flex;flex-direction:column;height:100%}
+#screen-line .app-header{background:rgba(136,123,153,0.7);backdrop-filter:blur(var(--glass-blur));color:#fff;border-bottom:none}
+#screen-line .back-btn,#screen-line .header-right{color:#fff}
+.line-status-box{display:flex;flex-direction:column;align-items:center;cursor:pointer}
+.line-status-text{font-size:10px;margin-top:2px;opacity:0.8;display:flex;align-items:center;gap:4px}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#ddd}.status-dot.online{background:#4cd964;box-shadow:0 0 5px #4cd964}
+#line-bg-layer{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background-size:cover;background-position:center;opacity:1;background-color:#f0f0f5}
+.chat-list{flex:1;overflow-y:auto;padding:15px;padding-bottom:10px;display:flex;flex-direction:column;gap:20px;-webkit-overflow-scrolling:touch}
+.chat-row{display:flex;align-items:flex-start;width:100%;margin-bottom:5px;position:relative}
+.chat-row.right{justify-content:flex-end}
+.select-checkbox{display:none;width:24px;height:24px;border-radius:50%;border:2px solid #ccc;margin-right:10px;align-self:center;flex-shrink:0}
+.chat-row.selecting .select-checkbox{display:block}
+.chat-row.selected .select-checkbox{background:var(--morandi-purple);border-color:var(--morandi-purple);position:relative}
+.chat-row.selected .select-checkbox::after{content:'✓';color:#fff;position:absolute;left:5px;top:-1px;font-size:14px}
+.chat-avatar{width:40px;height:40px;border-radius:5px;background:#ccc;background-size:cover;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+.chat-row.left .chat-avatar{margin-right:10px}.chat-row.right .chat-avatar{margin-left:10px;order:2}
+/* 去掉了 backdrop-filter，解决了卡顿 */
+.chat-bubble{max-width:70%;padding:10px 12px;border-radius:6px;font-family:var(--hand-font);font-size:20px;line-height:1.4;position:relative;word-wrap:break-word;backdrop-filter:blur(12px);box-shadow:0 2px 5px rgba(0,0,0,0.05);border:1px solid rgba(255,255,255,0.1)}
+.chat-bubble.left{background:var(--bubble-left);color:var(--line-text-color-left)}.chat-bubble.right{background:var(--morandi-blue-purple);color:var(--line-text-color)}
+.chat-bubble img.msg-img{max-width:100%;border-radius:4px;display:block}.chat-bubble img.msg-sticker{width:120px;height:auto;display:block}
+.quote-container{margin-bottom:8px;padding:8px;background:rgba(0,0,0,0.1);border-radius:4px;display:flex;flex-direction:column}
+.quote-title{font-size:12px;opacity:0.8;margin-bottom:2px;font-family:sans-serif}.quote-content{font-size:13px;opacity:0.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:sans-serif}
+.chat-input-area{position:relative;width:100%;background:var(--line-bottom-bg);backdrop-filter:blur(var(--glass-blur));padding:10px;padding-bottom:var(--safe-bottom);display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,0.2);z-index:50;flex-shrink:0}
+.input-top-bar{display:flex;align-items:center;gap:10px;width:100%}
+.replying-bar{display:none;padding:8px 12px;background:rgba(255,255,255,0.5);font-size:12px;color:#666;border-radius:4px;margin-bottom:8px;justify-content:space-between;align-items:center;border-left:3px solid #999}
+.replying-bar.active{display:flex}
+.icon-btn{font-size:26px;color:#555;cursor:pointer;width:34px;text-align:center}
+.chat-input{flex:1;border:none;padding:10px 10px;border-radius:8px;background:rgba(255,255,255,0.6);backdrop-filter:blur(5px);font-size:16px;min-height:40px;box-shadow:inset 0 1px 3px rgba(0,0,0,0.05)}
+.send-btn{width:36px;height:36px;border-radius:50%;background:var(--morandi-purple);color:#fff;display:flex;justify-content:center;align-items:center;cursor:pointer;font-size:16px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
+.sticker-panel{display:none;height:250px;overflow-y:auto;background:rgba(255,255,255,0.9);margin-top:0;border-top:1px solid #dcdcdc;padding:15px;grid-template-columns:repeat(4,1fr);gap:15px;align-content:flex-start}
+.sticker-panel.active{display:grid}
+.sticker-wrapper{position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:8px;padding:5px}
+.sticker-item{max-width:100%;max-height:100%;object-fit:contain;cursor:pointer}
+.sticker-select-mask{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.2);border-radius:8px;display:none;align-items:center;justify-content:center}
+.sticker-wrapper.selected .sticker-select-mask{display:flex;background:rgba(0,0,0,0.4)}
+.sticker-wrapper.selected .sticker-select-mask::after{content:'✓';color:#fff;font-size:24px;font-weight:bold}
+.sticker-action-bar{grid-column:1/-1;display:none;justify-content:space-between;align-items:center;padding:5px;background:#eee;border-radius:4px;margin-bottom:5px;position:sticky;top:0;z-index:10}
+.sticker-action-bar.active{display:flex}
+.sticker-btn-cancel{color:#333;font-size:14px;padding:5px 10px}.sticker-btn-del{color:#ff3b30;font-size:14px;font-weight:bold;padding:5px 10px}
+.add-sticker-btn{border:1px solid #ddd;display:flex;align-items:center;justify-content:center;color:#999;font-size:30px;border-radius:8px;cursor:pointer;height:100%;background:#fff}
+.batch-action-bar{display:none;justify-content:center;align-items:center;padding:10px;background:#fff;position:absolute;bottom:0;left:0;width:100%;height:60px;z-index:60;border-top:1px solid #eee}
+.batch-action-bar.active{display:flex}.batch-delete-btn{color:#ff3b30;font-size:24px;width:100%;text-align:center}
+.context-menu{position:absolute;display:none;background:#fff;border-radius:4px;padding:0;z-index:999;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.2)}
+.context-menu.active{display:flex;flex-direction:row;animation:popIn 0.1s}
+.context-item{color:#333;padding:10px 20px;font-size:14px;cursor:pointer;border-right:1px solid #eee;white-space:nowrap}
+.context-item:last-child{border-right:none}
+.bill-header{background:#fff;padding:15px;text-align:center;border-bottom:1px dashed #ddd;position:relative}
+.balance-label{font-size:13px;color:#888}.balance-amount{font-size:36px;font-weight:bold;margin:5px 0 0 0;color:#333}
+.net-change{font-size:14px;color:#666;margin-bottom:15px;font-weight:500}.net-change.plus{color:#34c759}.net-change.minus{color:#ff3b30}
+.pie-chart-container{display:flex;justify-content:center;margin-bottom:10px}.pie-chart{width:100px;height:100px;border-radius:50%;background:#eee;position:relative}
+.bill-input-group{background:#fff;padding:15px;margin-top:10px;display:flex;flex-direction:column;gap:10px}
+.bill-type-switch{display:flex;gap:10px;margin-bottom:5px}
+.type-btn{flex:1;padding:8px;text-align:center;border-radius:8px;background:#f0f0f0;color:#999;font-size:14px}
+.type-btn.active{background:#007aff;color:#fff}.type-btn.active.expense{background:#ff3b30}
+.bill-list{padding:10px;padding-bottom:60px}
+.bill-item{background:#fff;padding:12px;margin-bottom:10px;border-radius:12px;display:flex;flex-direction:column;position:relative;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.bill-row-main{display:flex;justify-content:space-between;align-items:center;width:100%}
+.bill-money.in{color:#34c759;font-weight:bold}.bill-money.out{color:#ff3b30;font-weight:bold}
+.bill-note-box{margin-top:8px;background:#fff9c4;color:#8a6d3b;padding:6px 10px;font-size:12px;border-radius:6px;width:100%;border:1px solid #faebcc;font-family:sans-serif}
+#screen-mail{background:#f0f0f0}
+.mail-list{padding:40px 20px;display:flex;overflow-x:auto;gap:30px;scroll-snap-type:x mandatory;height:100%;align-items:center}
+.mail-envelope{flex:0 0 260px;height:180px;background:#fdfbf7;border:1px solid #e0e0e0;position:relative;box-shadow:0 10px 20px rgba(0,0,0,0.1);scroll-snap-align:center;background-image:repeating-linear-gradient(135deg,#d9534f 0px,#d9534f 10px,transparent 10px,transparent 20px,#428bca 20px,#428bca 30px,transparent 30px,transparent 40px);padding:10px;cursor:pointer;transition:transform 0.3s;display:flex;align-items:center;justify-content:center}
+.mail-envelope:active{transform:scale(0.95)}
+.mail-envelope-inner{background:#fff;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;box-shadow:inset 0 0 10px rgba(0,0,0,0.05);position:relative;z-index:2}
+.mail-flap{position:absolute;top:0;left:0;width:100%;height:0;border-left:130px solid transparent;border-right:130px solid transparent;border-top:100px solid rgba(240,240,240,0.9);z-index:3;pointer-events:none;filter:drop-shadow(0 2px 2px rgba(0,0,0,0.1))}
+.mail-stamp{position:absolute;top:15px;right:15px;width:40px;height:50px;background:#eee;border:2px dotted #ccc;display:flex;align-items:center;justify-content:center;font-size:10px;color:#999}
+.mail-info-text{text-align:center;margin-top:20px}.mail-sender-name{font-weight:bold;font-size:18px;color:#333;font-family:var(--hand-font)}.mail-date-label{font-size:12px;color:#999;margin-top:5px}
+.mail-delete-btn{position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);color:#ff3b30;font-size:14px;padding:5px 10px;background:rgba(255,255,255,0.8);border-radius:15px;display:flex;align-items:center;gap:5px}
+.write-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;z-index:110;transform:translateY(100%);transition:transform 0.3s;display:flex;flex-direction:column}
+.write-screen.active{transform:translateY(0)}
+.letter-paper{flex:1;padding:30px 25px;background:repeating-linear-gradient(#fff,#fff 30px,#e5e5e5 31px);font-family:var(--hand-font);font-size:24px;line-height:31px;color:#2c3e50;overflow-y:auto}
+.letter-input{width:100%;height:100%;border:none;background:transparent;resize:none;outline:none;font-family:inherit;font-size:inherit;line-height:inherit}
+.sender-toggle{font-size:12px;padding:5px 10px;background:#eee;border-radius:15px;margin-right:10px;cursor:pointer}.read-content{white-space:pre-wrap}
+.reply-section{margin-top:30px;border-top:2px dashed #ccc;padding-top:20px;position:relative}
+.reply-btn{display:block;width:100%;padding:12px;background:#2c3e50;color:#fff;text-align:center;border-radius:8px;cursor:pointer;font-family:sans-serif;font-size:14px;margin-top:20px;box-shadow:0 4px 10px rgba(0,0,0,0.2)}
+.reply-content{background:#f9f9f9;padding:15px;border-radius:8px;margin-top:15px;font-family:var(--hand-font);font-size:22px;line-height:1.5;color:#444;position:relative}
+.reply-analysis{font-size:10px;color:#888;margin-top:10px;font-family:sans-serif;border-top:1px solid #eee;padding-top:5px}
+.reply-delete{position:absolute;top:-10px;right:-5px;background:#ff3b30;color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;cursor:pointer;font-family:sans-serif}
+.dice-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(20,20,35,0.95);z-index:300;flex-direction:column;align-items:center;justify-content:center;color:#fff}
+.dice-modal.active{display:flex}
+.dice-container{display:flex;gap:15px;margin-bottom:30px;perspective:1000px}
+.dice-box{width:80px;height:80px;background:linear-gradient(135deg,#2a0845,#6441a5);border-radius:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(100,65,165,0.5);border:1px solid rgba(255,255,255,0.2);transition:transform 0.5s}
+.dice-icon{font-size:32px;margin-bottom:5px;color:#ffd700;text-shadow:0 0 10px rgba(255,215,0,0.5)}.dice-label{font-size:12px;opacity:0.8}
+.dice-btn{padding:10px 30px;background:#e94560;border:none;border-radius:25px;color:#fff;font-weight:bold;font-size:16px;cursor:pointer;box-shadow:0 4px 15px rgba(233,69,96,0.4)}
+.dice-result-area{margin-top:20px;text-align:center;display:none;width:80%}
+.dice-options{display:flex;gap:10px;margin-top:20px;width:100%;justify-content:center}
+.dice-opt-btn{flex:1;padding:12px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:8px;cursor:pointer;font-size:13px}
+#screen-photo{background:#2c2c2c}
+#screen-photo .app-header{background:rgba(44,44,44,0.9);color:#fff;border-bottom:1px solid #444}
+#screen-photo .back-btn,#screen-photo .header-right{color:#fff}
+.album-grid{padding:20px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.album-cover{aspect-ratio:3/4;background:var(--kraft-paper);border-radius:4px;position:relative;box-shadow:5px 5px 15px rgba(0,0,0,0.5);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;border:1px solid #b08d55}
+.album-cover::before{content:'';position:absolute;left:5px;top:0;bottom:0;width:2px;background:rgba(0,0,0,0.1);box-shadow:2px 0 0 rgba(0,0,0,0.1)}
+.album-name{margin-top:10px;font-family:var(--hand-font);font-size:20px;color:#3e2723;text-align:center;padding:0 10px}.album-count{font-size:10px;color:#5d4037;margin-top:5px}
+.album-thumb{width:80%;height:60%;object-fit:cover;border:2px solid #fff;transform:rotate(-5deg);box-shadow:0 2px 5px rgba(0,0,0,0.2);background:#eee}
+.album-viewer{position:fixed;top:0;left:0;width:100%;height:100%;background:#1a1a1a;z-index:120;display:none;flex-direction:column}
+.album-viewer.active{display:flex}
+.book-container{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;align-items:center;padding:0 20px;gap:20px}
+.book-page{flex:0 0 100%;height:80%;background:#fff;scroll-snap-align:center;border-radius:5px;box-shadow:0 5px 20px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.book-photo{max-width:90%;max-height:90%;object-fit:contain;border:5px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,0.2);transition:transform 0.3s}
+.book-page:active .book-photo{transform:scale(0.98)}
+.add-photo-page{flex:0 0 100%;height:80%;background:rgba(255,255,255,0.1);scroll-snap-align:center;border-radius:5px;border:2px dashed rgba(255,255,255,0.3);display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);cursor:pointer}
+.add-photo-page i{font-size:40px;margin-bottom:10px}
+.photo-slide-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:150;transform:translateY(100%) scale(0.5);opacity:0;transition:all 0.4s cubic-bezier(0.19,1,0.22,1);display:flex;align-items:center;justify-content:center}
+.photo-slide-modal.active{transform:translateY(0) scale(1);opacity:1}
+.full-photo{width:100%;height:100%;object-fit:contain}
+.photo-actions{position:absolute;bottom:30px;display:flex;gap:20px}.action-icon{color:#fff;font-size:24px;cursor:pointer;text-shadow:0 2px 5px rgba(0,0,0,0.5)}
+#screen-date{background:#f2f2f7}
+.date-list{padding:15px;display:flex;flex-direction:column;gap:15px}
+.date-card{height:120px;border-radius:15px;padding:20px;color:#fff;position:relative;overflow:hidden;display:flex;justify-content:space-between;align-items:center;box-shadow:0 5px 15px rgba(0,0,0,0.1);background-size:cover;background-position:center}
+.date-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1}
+.date-info{position:relative;z-index:2}
+.date-title{font-size:18px;font-weight:bold;margin-bottom:5px}.date-target{font-size:12px;opacity:0.9}
+.date-days{position:relative;z-index:2;font-size:28px;font-weight:bold;font-family:'Arial',sans-serif;text-align:right}.date-days span{font-size:12px;font-weight:normal;margin-left:2px;display:block}
+.notification-banner{position:fixed;top:-100px;left:10px;right:10px;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:15px;padding:15px;box-shadow:0 5px 20px rgba(0,0,0,0.2);z-index:9999;display:flex;align-items:center;gap:10px;transition:top 0.5s cubic-bezier(0.34,1.56,0.64,1);cursor:pointer;pointer-events:none}
+.notification-banner.show{top:calc(var(--safe-top) + 10px);pointer-events:auto}
+.notif-icon{width:40px;height:40px;background:#ff3b30;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px}.notif-content{flex:1}.notif-title{font-weight:bold;font-size:14px;margin-bottom:2px}.notif-desc{font-size:12px;color:#666}
+#screen-tarot{background-color:var(--tarot-bg-color);background-size:cover;background-position:center;background-repeat:no-repeat;color:var(--tarot-text);overflow:hidden;display:flex;flex-direction:column;transition:background-image 0.5s ease}
+#screen-tarot .app-header{background:rgba(0,0,0,0.3);color:#fff;border-bottom:none;z-index:101}
+#screen-tarot .back-btn,#screen-tarot .header-right{color:#fff}
+.bg-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);pointer-events:none;z-index:0}
+#table-area{flex:1;overflow-y:auto;overflow-x:hidden;padding:20px;perspective:1000px;display:flex;flex-wrap:wrap;justify-content:center;align-content:flex-start;gap:10px;z-index:1}
+.card-container{width:70px;height:120px;position:relative;transform-style:preserve-3d;transition:transform 0.6s,margin 0.3s;cursor:pointer;user-select:none;-webkit-user-select:none}
+.card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.6s}
+.card-container.flipped .card-inner{transform:rotateY(180deg)}
+.card-container.reversed .card-front{transform:rotateY(180deg) rotate(180deg)}
+.card-front,.card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:6px;box-shadow:0 4px 6px rgba(0,0,0,0.4);overflow:hidden}
+.card-back{background:var(--tarot-card-back);background-image:radial-gradient(circle at 50% 50%,#3c096c 0%,#10002b 100%);border:1px solid #5a189a;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;z-index:2;transform:translateY(-100%)}
+.card-back.default-theme::after{content:"☾";color:var(--tarot-moon);font-size:32px;opacity:0.9;text-shadow:0 0 10px rgba(76,201,240,0.6);transform:rotate(-15deg)}
+.card-front{background:#000;transform:rotateY(180deg);display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+.card-real-img{width:100%;height:100%;object-fit:cover;display:block}
+.card-front-name{position:absolute;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.6);color:#fff;font-size:10px;text-align:center;padding:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-container.selected{border:2px solid #ffd700;box-shadow:0 0 15px #ffd700;z-index:100;border-radius:8px;transform:scale(1.05)}
+.bottom-controls{padding:15px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,0.1);z-index:100}
+.action-btn{background:var(--tarot-accent);color:white;border:none;padding:10px 20px;border-radius:20px;font-weight:bold;cursor:pointer;box-shadow:0 4px 10px rgba(233,69,96,0.4);transition:all 0.2s}
+.action-btn:active{transform:scale(0.95)}
+.btn-secondary{background:#444}
+.tarot-modal{display:none;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;justify-content:center;align-items:center}
+.tarot-modal.active{display:flex}
+.tarot-modal-content{background:rgba(30,30,50,0.95);padding:20px;border-radius:12px;width:90%;max-width:500px;max-height:90vh;overflow-y:auto;border:1px solid #444;color:#fff}
+.section-title{font-size:14px;color:#4cc9f0;border-bottom:1px solid #444;padding-bottom:5px;margin-top:15px;margin-bottom:10px;font-weight:bold}
+.note-paper{background:var(--tarot-note-bg);color:var(--tarot-note-text);padding:20px;border-radius:4px;box-shadow:0 10px 25px rgba(0,0,0,0.5);font-family:"Courier New",Courier,monospace}
+.selected-cards-display{display:flex;justify-content:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.mini-card-wrapper{position:relative;width:50px;height:85px;box-shadow:2px 2px 5px rgba(0,0,0,0.2)}
+.mini-card-img{width:100%;height:100%;object-fit:cover;border-radius:3px}
+.mini-card-tag{position:absolute;bottom:0;width:100%;background:rgba(0,0,0,0.6);color:#fff;font-size:8px;text-align:center;padding:2px 0;border-bottom-left-radius:3px;border-bottom-right-radius:3px}
+.reversed-display{transform:rotate(180deg)}
+.input-group{margin-bottom:15px}
+.input-group label{display:block;font-weight:bold;margin-bottom:5px;font-size:14px;color:#ddd}
+.note-paper .input-group label{color:#555}
+.tarot-input,.tarot-select{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;box-sizing:border-box;background:rgba(255,255,255,0.95);font-size:14px;color:#333}
+.tarot-modal-content select{background:rgba(255,255,255,0.9)}
+.tarot-textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;box-sizing:border-box;background:rgba(255,255,255,0.95);font-size:14px;color:#333;height:100px;resize:vertical;line-height:1.5}
+.ai-options{display:flex;gap:10px;margin-bottom:10px}
+.ai-option-btn{flex:1;padding:10px;border:1px solid #999;background:transparent;cursor:pointer;border-radius:6px;color:#444;transition:0.3s}
+.ai-option-btn.selected{background:#333;color:#fff;border-color:#333}
+.history-item{background:#2a2a40;margin-bottom:12px;padding:12px;border-radius:8px;font-size:13px;position:relative;border:1px solid #333}
+.delete-hist-btn{position:absolute;top:10px;right:10px;background:#e94560;color:#fff;border:none;border-radius:4px;font-size:11px;padding:4px 8px;cursor:pointer}
+.spinner{display:inline-block;width:20px;height:20px;border:3px solid rgba(0,0,0,0.1);border-radius:50%;border-top-color:#333;animation:spin 1s ease-in-out infinite;vertical-align:middle;margin-right:5px}
+@keyframes spin{to{transform:rotate(360deg)}}
+#screen-drama{background:#f8f8f8}
+.drama-container{padding:20px;padding-bottom:80px}
+.drama-card{background:#fff;border-radius:12px;padding:15px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.drama-title{font-weight:bold;margin-bottom:10px;color:#333;display:flex;justify-content:space-between;align-items:center}
+.profile-row{display:flex;gap:10px;margin-bottom:10px}
+.profile-input{flex:1;padding:8px;border:1px solid #eee;border-radius:6px;font-size:13px}
+.drama-textarea{width:100%;height:80px;padding:10px;border:1px solid #eee;border-radius:6px;resize:none;font-size:14px;margin-bottom:10px}
+.drama-btn-group{display:flex;gap:10px}
+.drama-btn{flex:1;padding:10px;border-radius:8px;border:none;color:#fff;font-weight:bold;cursor:pointer;font-size:14px}
+.btn-random{background:#ff9500}.btn-generate{background:var(--morandi-purple)}
+.nsfw-toggle{display:flex;align-items:center;gap:5px;font-size:12px;color:#666;margin-top:5px}
+.novel-reader{position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;z-index:200;display:none;flex-direction:column}
+.novel-reader.active{display:flex}
+.novel-header{padding-top:calc(var(--safe-top) + 10px);padding-bottom:15px;padding-left:15px;padding-right:15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(0,0,0,0.05)}
+.novel-content{flex:1;overflow-y:auto;padding:20px 25px;font-family:var(--serif-font);font-size:18px;line-height:1.8;white-space:pre-wrap;text-align:justify}
+.novel-theme-bar{padding:10px;display:flex;justify-content:center;gap:15px;background:rgba(0,0,0,0.02)}
+.theme-dot{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid rgba(0,0,0,0.1)}
+.theme-light{background:#fff;color:#333}.theme-sepia{background:#f4ecd8;color:#5b4636}.theme-green{background:#cce8cf;color:#2c3e50}.theme-dark{background:#1a1a1a;color:#ccc}
+#screen-period{background:#fff0f5}
+#screen-period .app-header{background:rgba(255,240,245,0.9)}
+.period-container{padding:20px}
+.period-card{background:#fff;border-radius:15px;padding:20px;margin-bottom:20px;box-shadow:0 4px 15px rgba(255,105,180,0.1)}
+.period-main-info{text-align:center;margin-bottom:20px}
+.period-phase-badge{display:inline-block;padding:5px 15px;background:#ff69b4;color:#fff;border-radius:20px;font-size:12px;margin-bottom:10px}
+.period-date-big{font-size:24px;font-weight:bold;color:#333}.period-desc{font-size:13px;color:#888;margin-top:5px}
+.period-input-row{display:flex;gap:10px;margin-bottom:10px;align-items:center}
+.period-input-row label{font-size:13px;color:#666;width:70px}
+.period-btn{width:100%;padding:12px;background:#ff69b4;color:#fff;border:none;border-radius:10px;font-weight:bold;cursor:pointer;margin-top:10px}
+.ai-comfort-box{background:#fff;border:1px solid #ffe4e1;border-radius:12px;padding:15px;margin-top:20px;position:relative}
+.ai-comfort-box::before{content:'💬';position:absolute;top:-10px;left:15px;background:#fff;padding:0 5px;font-size:16px}
+.recipe-box{background:#f0fff0;border:1px solid #c1e1c1;border-radius:12px;padding:15px;margin-top:15px}
+.recipe-title{font-weight:bold;color:#2e8b57;margin-bottom:5px;display:flex;align-items:center;gap:5px}
+.period-history-section{margin-top:20px;border-top:1px dashed #ffb6c1;padding-top:15px}
+.period-history-section h4{margin:0 0 10px 0;color:#d81b60;font-size:14px}
+.period-input-group{display:flex;gap:5px;align-items:center;margin-bottom:10px}
+.period-input-group input{flex:1;padding:8px;border:1px solid #ffc0cb;border-radius:6px;font-size:12px}
+.btn-mini{padding:8px 12px;background:#ff69b4;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:14px}
+.period-history-list{max-height:150px;overflow-y:auto}
+.period-history-item{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:8px 12px;border-radius:8px;margin-bottom:5px;font-size:12px;color:#555;border:1px solid #fff0f5}
+.period-del-btn{color:#ff3b30;cursor:pointer;padding:5px}
+#screen-style{background:#f2f2f7}
+.style-list{padding:20px;display:flex;flex-direction:column;gap:15px}
+.style-card{background:#fff;border-radius:12px;padding:15px;display:flex;align-items:center;gap:15px;box-shadow:0 2px 5px rgba(0,0,0,0.05)}
+.style-icon-preview{width:50px;height:50px;border-radius:12px;background:#eee;background-size:cover;background-position:center;flex-shrink:0;border:1px solid #ddd;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#999;font-size:20px;background-repeat:no-repeat}
+.style-info{flex:1;display:flex;flex-direction:column;gap:5px}
+.style-input{border:1px solid #eee;padding:5px;border-radius:4px;font-size:14px;width:100%}
+.color-picker-wrapper{display:flex;align-items:center;gap:5px;font-size:12px;color:#666}
+.color-picker{width:24px;height:24px;border:none;padding:0;background:none;cursor:pointer}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:200;align-items:center;justify-content:center}
+.modal.active{display:flex}
+.modal-content{background:#fff;width:85%;padding:25px;border-radius:20px;max-height:80%;overflow-y:auto}
+.setting-row{margin-bottom:20px}
+.setting-row label{display:block;font-size:13px;color:#666;margin-bottom:8px;font-weight:500}
+input[type=range],input[type=text],input[type=date],input[type=number],input[type=password],select{width:100%;accent-color:var(--morandi-purple);padding:8px;border:1px solid #ddd;border-radius:8px}
+.file-upload-btn{display:block;width:100%;padding:10px;background:#f0f0f5;text-align:center;border-radius:8px;font-size:14px;color:#666;cursor:pointer;border:1px dashed #ccc;margin-top:5px}
+.modal-btns{display:flex;gap:10px;margin-top:20px}
+.btn{flex:1;padding:12px;border:none;border-radius:12px;cursor:pointer;font-size:15px}
+.btn-cancel{background:#eee;color:#666}.btn-confirm{background:var(--morandi-purple);color:#fff}.btn-danger{background:#ff3b30;color:#fff}
+.dual-slider-box{position:relative;width:100%;height:40px;display:flex;align-items:center}
+.slider-track-bg{position:absolute;top:50%;transform:translateY(-50%);width:100%;height:4px;background:#ddd;border-radius:2px;z-index:1}
+.slider-track-fill{position:absolute;top:50%;transform:translateY(-50%);height:4px;background:var(--morandi-purple);z-index:2}
+.dual-slider-box input[type=range]{position:absolute;top:50%;transform:translateY(-50%);width:100%;pointer-events:none;-webkit-appearance:none;background:none;z-index:3;margin:0;padding:0;border:none}
+.dual-slider-box input[type=range]::-webkit-slider-thumb{pointer-events:auto;-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid var(--morandi-purple);cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.3);margin-top:0}
+.bg-line{background:#06c755}.bg-settings{background:#8e8e93}.bg-words{background:#5ac8fa}.bg-money{background:#34c759}.bg-style{background:#ff2d55}.bg-photo{background:linear-gradient(to bottom,#a18cd1 0%,#fbc2eb 100%)}.bg-note{background:#ffcc00}.bg-tarot{background:#5856d6}.bg-drama{background:#ff9500}.bg-date{background:#ff3b30}.bg-period{background:#ff9ff3}.bg-mail{background:#007aff}
+.receipt-container{padding:20px;display:flex;flex-direction:column;gap:20px;overflow-y:auto}
+.receipt{background:#fff;padding:15px;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.1));position:relative}
+.receipt-title{text-align:center;border-bottom:1px dashed #aaa;padding-bottom:10px;margin-bottom:10px;font-family:monospace;font-weight:bold}
+.receipt-input{width:100%;border:none;resize:none;font-family:monospace;font-size:14px;line-height:1.5;color:#444;min-height:100px;outline:none}
+#screen-note{background:rgba(0,0,0,0.7)!important;display:flex;align-items:center;justify-content:center;backdrop-filter:none}
+#screen-note .app-header{display:none}
+.note-full-wrapper{position:relative;width:80%;max-width:320px;transform:rotate(-2deg)}
+.torn-paper{background:#fff;padding:40px 30px;font-family:var(--hand-font);font-size:32px;color:#2c3e50;line-height:1.6;text-align:center;box-shadow:0 15px 40px rgba(0,0,0,0.5);clip-path:polygon(2% 0%,98% 0%,100% 100%,95% 98%,90% 100%,85% 98%,80% 100%,75% 98%,70% 100%,65% 98%,60% 100%,55% 98%,50% 100%,45% 98%,40% 100%,35% 98%,30% 100%,25% 98%,20% 100%,15% 98%,10% 100%,5% 98%,0% 100%);min-height:300px;display:flex;align-items:center;justify-content:center}
+.note-close{position:absolute;top:-15px;left:-15px;width:36px;height:36px;background:#ff3b30;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,0.3);cursor:pointer;z-index:10}
+#boot-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;z-index:9999;display:flex;justify-content:center;align-items:center;flex-direction:column;transition:opacity 0.5s}
+.boot-loader{width:40px;height:40px;border:4px solid #eee;border-top-color:var(--morandi-purple);border-radius:50%;animation:spin 1s linear infinite}
+.segment-block{position:relative;padding:10px 0;margin-bottom:15px;border-bottom:1px dashed #eee}
+.segment-block:hover{background:rgba(0,0,0,0.02)}
+.segment-delete-btn{position:absolute;top:0;right:0;color:#ff3b30;cursor:pointer;font-size:14px;padding:5px;opacity:0.3}
+.segment-block:hover .segment-delete-btn{opacity:1}
+.reader-footer{padding:20px;margin-top:20px;display:flex;justify-content:center;border-top:1px solid #eee;background:#fff}
+.btn-continue{background:var(--morandi-purple);color:#fff;padding:12px 30px;border-radius:25px;border:none;font-size:16px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:flex;align-items:center;gap:8px}
+.btn-continue:active{transform:scale(0.95)}
+/* --- 冰箱 Widget 样式 (紫色小猫版) --- */
+.widget-fridge {
+    grid-column: span 1 !important; /* 强制占1列 */
+    grid-row: span 2; /* 占2行 */
+    background: #f0f8ff; /* 极淡的蓝白 */
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 4px solid #dceefb;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+.widget-fridge:active { transform: scale(0.95); }
+
+/* 冰箱门装饰 */
+.fridge-door-gap { position: absolute; top: 35%; left: 5px; right: 5px; height: 3px; background: rgba(0,0,0,0.05); border-radius: 2px; }
+.fridge-handle-top { position: absolute; top: 15%; right: 8%; width: 5px; height: 25px; background: #fff; border-radius: 4px; box-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+.fridge-handle-bottom { position: absolute; top: 40%; right: 8%; width: 5px; height: 25px; background: #fff; border-radius: 4px; box-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+/* 修改图片容器：调整位置，留出空间 */
+.fridge-cat-icon { 
+    margin-top: 45px; /*稍微往上提一点*/
+    display: flex; 
+    justify-content: center; 
+    position: absolute; 
+    width: 100%; 
+    top: 0; 
+    pointer-events: none; /* 防止图片挡住点击 */
+}
+
+/* 修改文字标签：变小、强制一行、省略号 */
+.fridge-label-text { 
+    margin-top: auto; 
+    margin-bottom: 12px; 
+    font-size: 10px; /* 文字变小 */
+    color: #887b99; 
+    font-weight: bold; 
+    font-family: 'Ma Shan Zheng', cursive; 
+    letter-spacing: 1px;
+    
+    /* 强制一行显示 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%; /* 限制宽度以触发省略号 */
+    text-align: center;
+}
+
+/* --- 冰箱内部 APP 样式 --- */
+.fridge-container { 
+    padding: 0; 
+    display: flex; 
+    flex-direction: column; 
+    /* 模拟冰箱内部的灯光：上部亮，下部稍暗，整体偏冷色调 */
+    background: radial-gradient(circle at 50% 10%, #ffffff 0%, #e3f2fd 40%, #bbdefb 100%);
+    height: 100%; 
+    box-shadow: inset 0 0 80px rgba(0,0,0,0.15); /* 内部阴影，增加深邃感 */
+}
+.fridge-shelf { 
+    padding: 10px; 
+    /* 玻璃质感：半透明白 + 模糊 */
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    /* 隔板边缘 */
+    border-bottom: 8px solid rgba(255, 255, 255, 0.6); 
+    border-top: 1px solid rgba(255,255,255, 0.4);
+    /* 隔板下的阴影 */
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05); 
+    position: relative; 
+    display: flex; 
+    align-items: flex-end; 
+}
+.shelf-label { 
+    position: absolute; 
+    top: 5px; 
+    left: 10px; 
+    font-size: 11px; 
+    color: rgba(60, 80, 100, 0.5); /* 颜色更像蚀刻文字 */
+    font-weight: bold; 
+    z-index: 0; 
+    text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+}
+
+/* 调料瓶拟物化 */
+#shelf-condiments { display: flex; width: 100%; justify-content: space-around; align-items: flex-end; padding-top: 15px; }
+.bottle-wrapper { display: flex; flex-direction: column; align-items: center; width: 14%; opacity: 0.4; transition: 0.3s; cursor: pointer; }
+.bottle-wrapper.active { opacity: 1; transform: scale(1.1); filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2)); }
+.b-oyster { width: 20px; height: 35px; background:#5d4037; border-radius:4px; position:relative; }
+.b-soy { width: 18px; height: 40px; background:#212121; border-radius:2px; position:relative; }
+.b-jar { width: 25px; height: 25px; background:#eee; border:1px solid #ccc; border-radius:4px; position:relative; }
+.b-vinegar { width: 22px; height: 35px; background:#111; border-radius:6px; position:relative; }
+.b-wine { width: 20px; height: 38px; background:rgba(255,193,7,0.8); border-radius:3px; position:relative; }
+/* 食用油样式：金黄色瓶身，红色瓶盖 */
+.b-oil { width: 28px; height: 40px; background: rgba(255, 215, 0, 0.9); border: 1px solid #d4af37; border-radius: 8px 8px 4px 4px; position: relative; }
+.b-oil::before { content:''; position:absolute; top:-5px; left:8px; width:10px; height:5px; background:#d32f2f; border-radius: 2px; }
+.b-oyster::before { content:''; position:absolute; top:-6px; left:4px; width:12px; height:6px; background:#d84315; }
+.b-soy::before { content:''; position:absolute; top:-4px; left:4px; width:10px; height:4px; background:#ef5350; }
+.b-vinegar::before { content:''; position:absolute; top:-4px; left:6px; width:10px; height:4px; background:#4caf50; }
+.b-wine::before { content:''; position:absolute; top:-4px; left:5px; width:10px; height:4px; background:#d32f2f; }
+.b-jar::before { content:''; position:absolute; top:-3px; left:2px; width:21px; height:3px; background:#90a4ae; }
+.bottle-label { font-size: 9px; margin-top: 3px; color: #555; text-align: center; white-space: nowrap; }
+
+/* 主食与食材 */
+#shelf-staples { display: flex; width: 100%; justify-content: space-around; align-items: flex-end; padding-top: 15px; }
+.staple-item { text-align: center; cursor: pointer; position: relative; padding: 5px; border-radius: 8px; transition: 0.2s; }
+.staple-icon { font-size: 28px; margin-bottom: 2px; filter: grayscale(100%); opacity: 0.5; transition: 0.3s; }
+.staple-item.active .staple-icon { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
+.staple-count { font-size: 10px; background: #ff3b30; color: #fff; padding: 2px 6px; border-radius: 10px; position: absolute; top: -5px; right: -5px; display: none; }
+.staple-item.active .staple-count { display: block; }
+.shelf-grid { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 15px; align-content: flex-start; width: 100%; }
+.ingredient-tag { background: #fff; border: 1px solid #ddd; padding: 5px 10px; border-radius: 15px; font-size: 13px; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer; }
+.ing-count { color: var(--morandi-purple); font-weight: bold; font-size: 12px; background: rgba(0,0,0,0.05); padding: 0 5px; border-radius: 4px; }
+.add-btn-circle { width: 30px; height: 30px; border-radius: 50%; border: 1px dashed #999; color: #999; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; }
+
+/* 底部操作与通话界面 */
+.cook-section { padding: 15px; background: #fff; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+.cook-btn { flex: 1; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: #fff; border: none; padding: 12px; border-radius: 25px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4); display: flex; align-items: center; justify-content: center; gap: 8px; margin-right: 15px; }
+.call-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, #333 0%, #1a1a1a 100%); z-index: 2000; display: none; flex-direction: column; align-items: center; justify-content: space-between; padding: 80px 30px 40px 30px; color: #fff; transform: translateY(100%); transition: transform 0.4s; }
+.call-screen.active { transform: translateY(0); display: flex; }
+.call-bg-blur { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; filter: blur(30px) brightness(0.6); z-index: -1; }
+.call-info { display: flex; flex-direction: column; align-items: center; z-index: 2; }
+.call-avatar-large { width: 100px; height: 100px; border-radius: 15px; background-size: cover; background-position: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 20px; }
+.call-name { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+.call-status { font-size: 14px; opacity: 0.8; }
+.call-actions { width: 100%; display: flex; justify-content: space-around; align-items: center; margin-bottom: 40px; }
+.call-btn-round { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; }
+.btn-hangup { background: #ff3b30; color: #fff; box-shadow: 0 5px 20px rgba(255, 59, 48, 0.4); }
+.btn-mute { background: rgba(255,255,255,0.2); width: 60px; height: 60px; font-size: 24px; }
+.recipe-overlay { position: absolute; top: 25%; left: 5%; width: 90%; background: rgba(255,255,255,0.95); border-radius: 20px; padding: 20px; color: #333; max-height: 50%; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: none; animation: popIn 0.4s; z-index: 10; }
+.recipe-overlay.show { display: block; }
+@keyframes popIn { from{opacity:0;transform:scale(0.9)} to{opacity:1;transform:scale(1)} }
+/* --- 新增：拍一拍系统消息样式 --- */
+.chat-row.system {
+    justify-content: center;
+    margin: 10px 0;
+    width: 100%;
+}
+.system-msg-text {
+    background: rgba(0,0,0,0.1);
+    color: #888;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    text-align: center;
+}
+/* --- 1. 微信风格拍一拍/系统消息 --- */
+.chat-row.system {
+    width: 100%;
+    justify-content: center;
+    margin: 15px 0;
+    pointer-events: none; /* 防止误触 */
+    padding: 0;
+}
+.chat-row.system .chat-bubble {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #b0b0b0 !important; /* 微信同款浅灰色 */
+    font-size: 12px !important;
+    padding: 2px 10px;
+    backdrop-filter: none;
+    text-align: center;
+    font-family: sans-serif; /* 系统消息用无衬线体更像 */
+    max-width: 90%;
+}
+
+/* --- 2. 自定义头像框容器结构 (修改版) --- */
+.avatar-container {
+    position: relative;
+    width: 45px;  /* 容器大小 (头像占位大小) */
+    height: 45px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: visible !important; /* 【关键】允许框超出容器范围 */
+}
+.chat-row.left .avatar-container { margin-right: 15px; /* 增加间距防止框太大遮住气泡 */ }
+.chat-row.right .avatar-container { margin-left: 15px; order: 2; }
+
+/* 实际的头像图片 */
+.chat-avatar-img {
+    width: 100%;    /* 填满容器 (45px) */
+    height: 100%;
+    border-radius: 6px; 
+    background-size: cover;
+    background-position: center;
+    background-color: #ccc;
+    z-index: 1;     /* 头像在下层 */
+}
+
+/* 覆盖在头像上的框 */
+.avatar-frame-overlay {
+    position: absolute;
+    top: 50%;       /* 居中定位 */
+    left: 50%;
+    transform: translate(-50%, -50%); /* 确保中心对齐 */
+    width: 135%;    /* 【关键】默认比头像大 35% */
+    height: 135%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none; 
+    z-index: 2;     /* 框在上层 */
+}
+
+/* 拍一拍抖动动画 */
+@keyframes shake-avatar {
+    0% { transform: rotate(0deg); }
+    20% { transform: rotate(-8deg); }
+    40% { transform: rotate(8deg); }
+    60% { transform: rotate(-5deg); }
+    80% { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
+}
+.avatar-shaking .chat-avatar-img {
+    animation: shake-avatar 0.4s ease-in-out;
+}
+/* ==================== 最终修正版样式 (蓝黑字+修复拉伸+新印章) ==================== */
+
+/* 1. 引入字体 */
+@import url('https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&family=Zhi+Mang+Xing&family=Long+Cang&family=Ma+Shan+Zheng&display=swap');
+
+/* 2. 基础信纸 (上半部分 - 保持奶白色) */
+.letter-paper {
+    flex: 1;
+    padding: 30px 25px;
+    background: #fffdf5; 
+    background-image: repeating-linear-gradient(#fffdf5, #fffdf5 30px, #e8e0d0 31px);
+    font-family: var(--hand-font);
+    font-size: 24px;
+    line-height: 31px;
+    color: #4a3b2a;
+    overflow-y: auto;
+    transition: background 0.5s;
+}
+/* --- 3. 回信区域 (下半部分 - 样式修正) --- */
+.reply-section {
+    margin-top: 30px;
+    position: relative;
+    
+    /* 1. 背景设置 */
+    background-image: url('https://i.postimg.cc/3R0HGzwX/IMG-9965.png');
+    
+    /* 2. 背景强制拉伸：无暗纹，撑满整个区域 */
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+    background-color: #fdfbf7; 
+
+    /* 内边距 */
+    padding-top: 110px; 
+    padding-left: 55px;
+    padding-right: 45px;
+    padding-bottom: 90px;
+    
+    min-height: 600px;
+    height: auto;
+    border-radius: 5px;
+    z-index: 1; 
+}
+/* --- 4. 回信文字样式 (修改：清晰的男性书写体) --- */
+.reply-content {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    
+    /* 【修改点1】字体改为 'Long Cang'。
+       这个字体是你代码开头引入过的，它像那种瘦长的钢笔字，
+       比之前的 'Liu Jian Mao Cao' (狂草) 清楚得多，但又保留了手写感。 */
+    font-family: 'Long Cang', cursive !important;
+    
+    /* 【修改点2】字号稍微调大一点点，因为 Long Cang 笔画比较细 */
+    font-size: 24px !important; 
+    
+    line-height: 1.6 !important; 
+    color: #000000 !important; 
+    font-weight: 500 !important;
+    background-image: none !important;
+    -webkit-text-fill-color: initial !important; 
+    text-shadow: none !important;
+    
+    /* 下划线保持原样 */
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.1); 
+    text-underline-offset: 6px; 
+    text-decoration-thickness: 1px;
+    
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2; 
+}
+
+/* --- 5. 礼物印章 (在字上面，遮住字) --- */
+.gift-stamp {
+    position: absolute;
+    
+    /* 【位置】往中间挪，确保能压住文字 */
+    bottom: 60px;  
+    right: 40px;   
+    
+    width: 140px;
+    height: 140px;
+    
+    /* 默认背景，会被JS随机覆盖 */
+    background-image: url('https://i.postimg.cc/h4Z204CY/IMG_9957.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent !important;
+    
+    /* 保持原来的旋转和缩放 */
+    transform: rotate(-10deg) scale(0.6); 
+    
+    /* 【关键修改 1】取消正片叠底 (删除 mix-blend-mode: multiply) */
+    /* 改为 normal 或者直接不写这一行，这样印章就是实心的，会遮住底下的黑字 */
+    mix-blend-mode: normal !important; 
+    
+    /* 【关键修改 2】层级设高，绝对要在文字上面 */
+    z-index: 999;  
+    
+    /* JS 会控制 opacity 实现随机透明度，这里不要写死 opacity */
+    
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+/* 6. 阅读界面的头部微调 */
+#read-screen .app-header {
+    background: rgba(255,255,255,0.9);
+    border-bottom: 1px solid #eee;
+}
+
+/* 7. 礼物详情全屏页 */
+.gift-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fdfbf7;
+    z-index: 2000;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    display: flex;
+    flex-direction: column;
+}
+.gift-screen.active { transform: translateY(0); }
+.gift-scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 30px;
+    font-family: 'Long Cang', cursive;
+    font-size: 24px;
+    line-height: 1.6;
+    color: #333;
+}
+.gift-reason-box {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(0, 31, 63, 0.05);
+    border-left: 4px solid #001f3f;
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+/* --- 新增：横向发票/收据样式 --- */
+.invoice-ticket {
+    background: #fff;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    /* 模拟纸张纹理 */
+    background-image: radial-gradient(#f0f0f0 1px, transparent 1px);
+    background-size: 10px 10px;
+    background-color: #fffdf5;
+    
+    border: 1px solid #d4b483;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace; /* 打印机字体 */
+    color: #444;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    display: flex;
+    flex-direction: row; /* 横向布局 */
+    overflow: hidden;
+}
+
+/* 左侧票根装饰 */
+.invoice-stub {
+    width: 60px;
+    background: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl; /* 竖排文字 */
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 14px;
+    border-right: 2px dashed #ccc;
+}
+
+/* 右侧主体内容 */
+.invoice-body {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.invoice-header {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.invoice-title {
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.invoice-no {
+    font-size: 12px;
+    color: #888;
+}
+
+.invoice-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.invoice-divider {
+    border-top: 1px dashed #aaa;
+    margin: 10px 0;
+}
+
+.invoice-item-name {
+    font-weight: bold;
+    font-size: 18px;
+    color: #000;
+}
+
+.invoice-reason-box {
+    margin-top: 15px;
+    font-size: 12px;
+    background: rgba(0,0,0,0.05);
+    padding: 10px;
+    border-radius: 4px;
+    font-family: var(--serif-font); /* 用回衬线体显得正式点 */
+    line-height: 1.5;
+}
+
+/* 模拟印章效果 */
+.invoice-stamp {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border: 3px double #d9534f;
+    color: #d9534f;
+    font-weight: bold;
+    padding: 5px 10px;
+    transform: rotate(-15deg);
+    font-size: 18px;
+    opacity: 0.8;
+    border-radius: 4px;
+    font-family: sans-serif;
+    pointer-events: none;
+}
+</style>
+<style id="dynamic-style"></style><style id="line-custom-css"></style>
+</head>
+<body>
+<div id="boot-screen"><div class="boot-loader"></div><p style="margin-top:20px;color:#666;font-size:12px">正在初始化数据库...</p></div>
+<div class="notification-banner" id="global-notify"><div class="notif-icon" id="notif-icon"><i class="fa-solid fa-bell"></i></div><div class="notif-content"><div class="notif-title" id="notif-title">通知</div><div class="notif-desc" id="notif-desc">内容...</div></div></div>
+<div id="phone-container">
+    <div class="status-bar"><div class="clock" id="clock">12:00</div><div class="date" id="date">12月23日 星期一</div></div>
+    <div class="music-widget"><div class="music-cover" id="global-music-cover"></div><div class="music-info"><div class="music-title" contenteditable="true">Only Love</div><div class="music-artist" contenteditable="true">Trademark</div></div><div class="music-controls"><i class="fa-solid fa-play"></i><i class="fa-solid fa-forward"></i></div></div>
+    <div class="app-grid">
+       <!-- 1. 修改后的备忘录 (变成 1x2 大小) -->
+<div class="app-item widget-item widget-memo" style="grid-column: span 1; grid-row: span 2;">
+    <div class="memo-title"><i class="fa-regular fa-pen-to-square"></i> 备忘</div>
+    <textarea class="memo-content" id="widget-memo-text" placeholder="..." onblur="saveMemoWidget()" style="font-size:14px;resize:none"></textarea>
+</div>
+
+<!-- 2. 新增的冰箱 Widget (1x2 大小) -->
+<div class="app-item widget-item widget-fridge" onclick="openApp('fridge')">
+    <div class="fridge-door-gap"></div>
+    <div class="fridge-handle-top"></div>
+    <div class="fridge-handle-bottom"></div>
+    
+    <!-- 图片区域 -->
+    <div class="fridge-cat-icon">
+        <!-- 这里把 width 改成了 65px (原45px)，并保持旋转角度 -->
+        <img src="https://i.postimg.cc/wvgX57sc/15278d970a8a08fd813b54a20cbd3744.png" 
+             style="width:65px; height:auto; transform: rotate(-5deg); filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));">
+    </div>
+
+    <!-- 底部文字 -->
+    <div class="fridge-label-text">冷蔵庫 </div>
+</div>
+        <div class="app-item" onclick="openApp('money')" id="app-item-money"><div class="app-icon bg-money" id="icon-money"><i class="fa-solid fa-wallet"></i></div><div class="app-name" id="name-money">记账</div></div>
+        <div class="app-item" onclick="openApp('photo')" id="app-item-photo"><div class="app-icon bg-photo" id="icon-photo"><i class="fa-regular fa-images"></i></div><div class="app-name" id="name-photo">相册</div></div>
+        <div class="app-item" onclick="openApp('period')" id="app-item-period"><div class="app-icon bg-period" id="icon-period"><i class="fa-solid fa-droplet"></i></div><div class="app-name" id="name-period">经期</div></div>
+        <div class="app-item" onclick="openApp('mail')" id="app-item-mail"><div class="app-icon bg-mail" id="icon-mail"><i class="fa-regular fa-envelope"></i></div><div class="app-name" id="name-mail">信件</div></div>
+        <div class="app-item" onclick="openApp('words')" id="app-item-words"><div class="app-icon bg-words" id="icon-words"><i class="fa-solid fa-book"></i></div><div class="app-name" id="name-words">词库</div></div>
+        <div class="app-item" onclick="openApp('date')" id="app-item-date"><div class="app-icon bg-date" id="icon-date"><i class="fa-solid fa-heart"></i></div><div class="app-name" id="name-date">纪念日</div></div>
+        <div class="app-item widget-item widget-couple" onclick="openCoupleSettings()">
+            <div class="couple-avatars"><div class="c-avatar" id="couple-ava-1"></div><div class="heartbeat-line"><svg class="heartbeat-path" viewBox="0 0 120 40"><path d="M0,20 L30,20 L40,5 L50,35 L60,20 L120,20" /></svg></div><div class="hollow-heart"><i class="fa-solid fa-heart"></i></div><div class="c-avatar" id="couple-ava-2"></div></div><div class="couple-text">已恋爱 <span class="couple-days" id="couple-days-count">0</span> 天</div>
+        </div>
+        <div class="app-item" onclick="openApp('style')" id="app-item-style"><div class="app-icon bg-style" id="icon-style"><i class="fa-solid fa-paintbrush"></i></div><div class="app-name" id="name-style">美化</div></div>
+        <div class="app-item" onclick="openApp('drama')" id="app-item-drama"><div class="app-icon bg-drama" id="icon-drama"><i class="fa-solid fa-masks-theater"></i></div><div class="app-name" id="name-drama">小剧场</div></div>
+        <div class="app-item widget-weather" id="weather-widget"><div class="weather-left"><i class="fa-solid fa-cloud-sun weather-icon" id="w-icon"></i><div class="weather-temp"><span id="w-temp">--</span>°</div></div><div class="weather-right"><div class="weather-loc" id="w-loc">定位中...</div><div class="weather-desc" id="w-desc">--</div></div></div>
+    </div>
+    <div class="dock">
+        <div class="app-item" onclick="openApp('settings')" id="app-item-settings"><div class="app-icon bg-settings" id="icon-settings"><i class="fa-solid fa-gear"></i></div><div class="app-name" id="name-settings">设置</div></div>
+        <div class="app-item" onclick="openApp('line')" id="app-item-line"><div class="app-icon bg-line" id="icon-line"><i class="fa-brands fa-line"></i></div><div class="app-name" id="name-line">Line</div></div>
+        <div class="app-item" onclick="openApp('note')" id="app-item-note"><div class="app-icon bg-note" id="icon-note"><i class="fa-regular fa-note-sticky"></i></div><div class="app-name" id="name-note">小纸条</div></div>
+        <div class="app-item" onclick="openApp('tarot')" id="app-item-tarot"><div class="app-icon bg-tarot" id="icon-tarot"><i class="fa-solid fa-star-of-david"></i></div><div class="app-name" id="name-tarot">塔罗牌</div></div>
+    </div>
+</div>
+<input type="file" id="couple-upload-1" accept="image/*" style="display:none" onchange="uploadCoupleAvatar(1,this)"><input type="file" id="couple-upload-2" accept="image/*" style="display:none" onchange="uploadCoupleAvatar(2,this)">
+
+<div id="screen-line" class="app-screen">
+    <div id="line-bg-layer"></div>
+    <div class="app-header"><span class="back-btn" onclick="closeApp('line')"><i class="fa-solid fa-chevron-left"></i> 列表</span><div class="line-status-box" onclick="toggleLineStatus()"><span class="screen-title" id="line-contact-name" contenteditable="true" onblur="saveLineContactName()">亲爱的</span><div class="line-status-text"><div class="status-dot" id="line-status-dot"></div><span id="line-status-label">离线</span></div></div><span class="header-right" onclick="openLineSettings()"><i class="fa-solid fa-sliders"></i></span></div>
+    <div class="chat-list" id="line-chat-list"></div>
+    <div class="context-menu" id="context-menu"><div class="context-item" onclick="prepareQuote()">引用</div><div class="context-item" onclick="enterSelectMode()">多选</div><div class="context-item" onclick="deleteSingleMessage()">删除</div></div>
+    <div class="batch-action-bar" id="batch-bar"><div class="icon-btn" onclick="exitSelectMode()" style="position:absolute;left:20px">取消</div><div class="batch-delete-btn" onclick="batchDeleteMsg()"><i class="fa-solid fa-trash-can"></i></div></div>
+    <div class="chat-input-area" id="input-area">
+        <div class="replying-bar" id="reply-bar"><div style="display:flex;flex-direction:column"><span style="color:#333;font-weight:bold;margin-bottom:2px">回复:</span><span id="reply-text-preview" style="color:#666">...</span></div><i class="fa-solid fa-xmark" onclick="cancelQuote()" style="cursor:pointer;padding:5px"></i></div>
+        <div class="input-top-bar"><input type="file" id="photo-upload" accept="image/*" style="display:none" multiple onchange="sendPhoto(this)"><input type="file" id="sticker-file-add" accept="image/*" style="display:none" multiple onchange="addStickerFile(this)"><div class="icon-btn" onclick="toggleStickerPanel()"><i class="fa-regular fa-face-smile"></i></div><div class="icon-btn" onclick="document.getElementById('photo-upload').click()"><i class="fa-regular fa-image"></i></div><input type="text" class="chat-input" id="line-input" placeholder="输入消息..."><div class="send-btn" onclick="lineSendMessage()"><i class="fa-solid fa-paper-plane"></i></div></div>
+        <div class="sticker-panel" id="sticker-panel"><div class="sticker-action-bar" id="sticker-edit-bar"><div class="sticker-btn-cancel" onclick="exitStickerEditMode()">取消</div><span style="font-size:12px;color:#999">选择表情包</span><div class="sticker-btn-del" onclick="deleteSelectedStickers()">删除 (<span id="sticker-sel-count">0</span>)</div></div><div class="sticker-wrapper add-sticker-btn" onclick="document.getElementById('sticker-file-add').click()">+</div></div>
+    </div>
+</div>
+
+<div id="screen-money" class="app-screen">
+    <div class="app-header"><span class="back-btn" onclick="closeApp('money')"><i class="fa-solid fa-chevron-left"></i> 返回</span><span class="screen-title">记账本</span><span class="header-right" onclick="showMoneyMenu()"><i class="fa-solid fa-ellipsis"></i></span></div>
+    <div class="screen-content"><div class="bill-header"><div class="balance-label">当前总资产</div><div class="balance-amount" id="money-balance">0.00</div><div class="net-change" id="money-net">净盈亏: 0.00</div><div class="pie-chart-container"><div class="pie-chart" id="money-chart"></div></div><div style="font-size:10px;color:#999;margin-top:5px">分类支出占比</div></div><div class="bill-input-group"><div class="bill-type-switch"><div class="type-btn active expense" onclick="setBillType('expense')" id="btn-expense">支出</div><div class="type-btn" onclick="setBillType('income')" id="btn-income">收入</div></div><input type="number" id="bill-amount" class="setting-input" placeholder="金额" style="padding:10px;border:1px solid #ddd;border-radius:8px;width:100%"><input type="text" id="bill-cat" class="setting-input" placeholder="分类" style="padding:10px;border:1px solid #ddd;border-radius:8px;width:100%"><button class="btn btn-confirm" onclick="addBill()">记一笔</button></div><div class="bill-list" id="bill-list"></div></div>
+</div>
+<div id="screen-fridge" class="app-screen">
+    <div class="app-header">
+        <span class="back-btn" onclick="closeApp('fridge')"><i class="fa-solid fa-chevron-left"></i> 返回</span>
+        <span class="screen-title">いぶくろこん</span>
+        <span class="header-right" onclick="showCookingHistory()"><i class="fa-solid fa-clock-rotate-left"></i></span>
+    </div>
+    
+    <div class="screen-content fridge-container">
+        <!-- 1. 调料层 -->
+        <div class="fridge-shelf" style="height:20%;">
+            <div class="shelf-label">调料区 (点击切换有无)</div>
+            <div id="shelf-condiments"></div>
+        </div>
+        
+        <!-- 2. 主食层 -->
+        <div class="fridge-shelf" style="height:20%;">
+            <div class="shelf-label">主食区 (米饭点击切换，面/面包点击输数量)</div>
+            <div id="shelf-staples"></div>
+        </div>
+        
+        <!-- 3. 蔬菜层 -->
+        <div class="fridge-shelf" style="flex:1;">
+            <div class="shelf-label">蔬菜区 (点击+添加，点击文字改数量)</div>
+            <div class="shelf-grid" id="shelf-veg">
+                <div class="add-btn-circle" onclick="addIngredient('veg')">+</div>
+            </div>
+        </div>
+        
+        <!-- 4. 肉类层 -->
+        <div class="fridge-shelf" style="flex:1; background:rgba(200,230,255,0.1)">
+            <div class="shelf-label">肉类冷冻区 (点击+添加，点击文字改数量)</div>
+            <div class="shelf-grid" id="shelf-meat">
+                <div class="add-btn-circle" onclick="addIngredient('meat')">+</div>
+            </div>
+        </div>
+        
+        <!-- 5. 底部做饭 -->
+        <div class="cook-section">
+            <button class="cook-btn" onclick="startCookingCall()"><i class="fa-solid fa-phone-volume"></i> 喂? 教我做饭</button>
+        </div>
+    </div>
+
+    <!-- 通话界面 -->
+    <div class="call-screen" id="cooking-call-screen">
+        <div class="call-bg-blur" id="call-bg-blur"></div>
+        <div class="call-info">
+            <div class="call-avatar-large" id="call-avatar-large"></div>
+            <div class="call-name" id="call-contact-name">Ta</div>
+            <div class="call-status" id="call-status-text">等待接听...</div>
+        </div>
+        <div class="recipe-overlay" id="recipe-overlay">
+            <h2 id="recipe-name-display" style="color:#000;margin-top:0"></h2>
+            <div id="recipe-content-display" style="font-size:14px;line-height:1.6"></div>
+        </div>
+        <div class="call-actions">
+            <div class="call-btn-round btn-mute"><i class="fa-solid fa-microphone-slash"></i></div>
+            <div class="call-btn-round btn-hangup" onclick="endCookingCall()"><i class="fa-solid fa-phone-slash"></i></div>
+            <div class="call-btn-round btn-speaker"><i class="fa-solid fa-volume-high"></i></div>
+        </div>
+    </div>
+
+    <!-- 历史记录 -->
+    <div class="modal" id="cooking-history-modal">
+        <div class="modal-content">
+            <h3>🍱 做饭记录</h3>
+            <div id="cooking-history-list" style="max-height:300px;overflow-y:auto"></div>
+            <div class="modal-btns"><button class="btn btn-cancel" onclick="closeModal()">关闭</button></div>
+        </div>
+    </div>
+</div>
+<!-- 新增：独立的食谱详情弹窗 -->
+<div class="modal" id="recipe-detail-modal">
+    <div class="modal-content" style="max-height:80vh; display:flex; flex-direction:column;">
+        <h3 id="detail-title" style="border-bottom:1px dashed #ccc; padding-bottom:10px;">菜名</h3>
+        <div id="detail-content" style="flex:1; overflow-y:auto; font-size:14px; line-height:1.6; white-space: pre-wrap;"></div>
+        <div class="modal-btns" style="margin-top:15px;">
+            <button class="btn btn-confirm" onclick="document.getElementById('recipe-detail-modal').classList.remove('active')">关闭</button>
+        </div>
+    </div>
+</div>
+
+<div id="screen-words" class="app-screen"><div class="app-header"><span class="back-btn" onclick="closeApp('words')"><i class="fa-solid fa-chevron-left"></i> 返回</span><span class="screen-title">词库中心</span><span class="header-right"></span></div><div class="screen-content receipt-content" style="background:#eee"><div class="receipt-container"><div class="receipt"><div class="receipt-title">Line 回复</div><textarea class="receipt-input" id="word-life" placeholder="每行一条..."></textarea></div><div class="receipt"><div class="receipt-title">💸 支出文案</div><textarea class="receipt-input" id="word-money-out"></textarea></div><div class="receipt"><div class="receipt-title">💰 收入文案</div><textarea class="receipt-input" id="word-money-in"></textarea></div><div class="receipt"><div class="receipt-title">小纸条</div><textarea class="receipt-input" id="word-note"></textarea></div></div></div></div>
+
+<div id="screen-note" class="app-screen"><div class="note-full-wrapper"><div class="note-close" onclick="closeApp('note')"><i class="fa-solid fa-xmark"></i></div><div class="torn-paper" id="note-content"></div></div></div>
+<div id="screen-mail" class="app-screen">
+    <div class="app-header">
+        <span class="back-btn" onclick="closeApp('mail')"><i class="fa-solid fa-chevron-left"></i> 返回</span>
+        <span class="screen-title">信箱</span>
+        <span class="header-right" onclick="openWriteScreen()"><i class="fa-solid fa-pen-to-square"></i></span>
+    </div>
+    <div class="screen-content mail-list" id="mail-list"></div>
+
+    <!-- 写信界面 -->
+    <div class="write-screen" id="write-screen">
+        <div class="app-header">
+            <span class="back-btn" onclick="closeWriteScreen()">取消</span>
+            <div style="display:flex;align-items:center">
+                <span class="sender-toggle" id="sender-toggle" onclick="toggleSender()">From: 我</span>
+                <span class="screen-title" id="write-title">写信</span>
+            </div>
+            <span class="header-right" onclick="saveMail()" style="font-size:16px;font-weight:bold;color:var(--morandi-purple)">完成</span>
+        </div>
+        <div class="letter-paper">
+            <textarea class="letter-input" id="mail-input" placeholder="见字如面..."></textarea>
+        </div>
+    </div>
+
+    <!-- 读信界面 -->
+    <div class="write-screen" id="read-screen">
+        <div class="app-header">
+            <span class="back-btn" onclick="closeReadScreen()"><i class="fa-solid fa-chevron-left"></i> 收起</span>
+            <span class="screen-title" id="read-title">信件内容</span>
+            <span class="header-right"></span>
+        </div>
+        <div class="letter-paper">
+            <div class="read-content" id="read-content-text"></div>
+            <div id="reply-container"></div>
+        </div>
+    </div>
+
+    <!-- 占卜/投掷骰子弹窗 -->
+    <div class="dice-modal" id="dice-modal">
+        <div class="dice-container">
+            <div class="dice-box" id="dice-planet"><div class="dice-icon"></div><div class="dice-label">行星</div></div>
+            <div class="dice-box" id="dice-sign"><div class="dice-icon"></div><div class="dice-label">星座</div></div>
+            <div class="dice-box" id="dice-house"><div class="dice-icon"></div><div class="dice-label">宫位</div></div>
+        </div>
+        <button class="dice-btn" onclick="throwDice()">🎲 投掷</button>
+        <div class="dice-result-area" id="dice-result-area">
+            <div style="margin-bottom:15px;font-size:14px;color:#ddd" id="dice-meaning"></div>
+            <div class="dice-options">
+                <button class="dice-opt-btn" onclick="openWriteReplyManual()">✍️ 手写</button>
+                <button class="dice-opt-btn" style="background:#e94560;border-color:#e94560" onclick="callAIGenerateReply()">🤖 AI 回信</button>
+            </div>
+        </div>
+        <div style="margin-top:30px;font-size:12px;color:#666;cursor:pointer" onclick="closeDiceModal()">取消</div>
+    </div>
+
+    <!-- 礼物详情全屏弹窗 -->
+    <div class="gift-screen" id="gift-screen">
+        <div class="app-header" style="background:transparent;border-bottom:1px solid #eee">
+            <span class="back-btn" onclick="closeGiftScreen()"><i class="fa-solid fa-xmark"></i> 关闭</span>
+            <span class="screen-title">附件详情</span>
+            <span class="header-right"></span>
+        </div>
+        <div class="gift-scroll-area">
+            <h2 id="gift-name-display" style="text-align:center;color:#5e4b8a;margin-bottom:30px;font-family:sans-serif"></h2>
+            <div id="gift-note-display" style="white-space: pre-wrap;"></div>
+            <div class="gift-reason-box">
+                <div style="font-weight:bold;margin-bottom:5px;color:#5e4b8a">🔮 命运占卜推测</div>
+                <div id="gift-reason-display"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="screen-photo" class="app-screen">
+    <div class="app-header"><span class="back-btn" onclick="closeApp('photo')"><i class="fa-solid fa-chevron-left"></i> 返回</span><span class="screen-title">我的相册</span><span class="header-right" onclick="createNewAlbum()"><i class="fa-solid fa-plus"></i></span></div><div class="screen-content album-grid" id="album-list"></div>
+    <div class="album-viewer" id="album-viewer"><div class="app-header" style="background:rgba(0,0,0,0.5);color:#fff;border:none"><span class="back-btn" onclick="closeAlbumViewer()" style="color:#fff"><i class="fa-solid fa-chevron-left"></i> 相册</span><span class="screen-title" id="viewer-title" style="color:#fff"></span><span class="header-right"></span></div><div class="book-container" id="book-container"></div><input type="file" id="album-photo-add" accept="image/*" style="display:none" multiple onchange="processAlbumPhotos(this)"></div>
+    <div class="photo-slide-modal" id="photo-slide-modal" onclick="closePhotoSlide()"><img src="" class="full-photo" id="slide-img"><div class="photo-actions" onclick="event.stopPropagation()"><i class="fa-solid fa-download action-icon" onclick="downloadPhoto()"></i><i class="fa-solid fa-trash action-icon" onclick="deleteCurrentPhoto()" style="color:#ff3b30"></i></div></div>
+</div>
+
+<div id="screen-date" class="app-screen"><div class="app-header"><span class="back-btn" onclick="closeApp('date')"><i class="fa-solid fa-chevron-left"></i> 返回</span><span class="screen-title">纪念日</span><span class="header-right" onclick="openDateModal()"><i class="fa-solid fa-plus"></i></span></div><div class="screen-content date-list" id="date-list"></div></div>
+
+<div id="screen-tarot" class="app-screen">
+    <div class="bg-overlay"></div>
+    <div class="app-header"><span class="back-btn" onclick="closeApp('tarot')"><i class="fa-solid fa-chevron-left"></i> 返回</span><span class="screen-title">私人塔罗空间</span><span class="header-right" onclick="openTarotSettings()"><i class="fa-solid fa-gear"></i></span></div>
+    <div id="table-area"></div>
+    <div class="bottom-controls"><button class="action-btn btn-secondary" onclick="openHistory()">📜 记录</button><div id="status-text" style="font-size:12px;opacity:0.8;color:#fff"></div><div><button class="action-btn" id="finish-btn" onclick="finishSelection()" style="display:none;margin-right:10px">✨ 完成</button><button class="action-btn" onclick="shuffleDeck()">🔄 重洗</button></div></div>
+    <div id="note-modal" class="tarot-modal"><div class="tarot-modal-content" style="background:transparent;padding:0;border:none;box-shadow:none"><div class="note-paper"><button onclick="closeTarotModal('note-modal')" style="float:right;border:none;background:none;cursor:pointer;font-size:18px;color:#555">✖</button><h3 style="text-align:center;margin-top:0;color:#333;border-bottom:1px dashed #999;padding-bottom:10px">🔮 命运启示</h3><div class="selected-cards-display" id="note-cards-display"></div><div class="input-group"><label>心中所惑:</label><input type="text" class="tarot-input" id="user-question" placeholder="例如：未来的发展？"></div><div class="input-group"><label>解牌风格:</label><div class="ai-options"><button class="ai-option-btn selected" onclick="setAiMode('dream',this)">💖 梦占</button><button class="ai-option-btn" onclick="setAiMode('trad',this)">🕯 传统</button></div></div><div class="input-group"><div style="display:flex;gap:5px;margin-bottom:5px"><button class="action-btn" style="padding:6px 15px;font-size:12px;background:#222" onclick="callAI()">🤖 开始占卜</button></div><textarea id="interpretation-text" class="tarot-textarea" placeholder="AI将连接潜意识..."></textarea></div><div id="loading-indicator" style="display:none;text-align:center;color:#555;font-size:12px;margin-bottom:10px"><div class="spinner"></div> 感应中...</div><button class="action-btn" style="width:100%;background:#222" onclick="saveRecord()">💾 保存记录</button></div></div></div>
+    <div id="tarot-settings-modal" class="tarot-modal"><div class="tarot-modal-content"><h3 style="margin-top:0">🛠 塔罗个性化</h3><div class="section-title">🎨 个性化</div><div class="input-group"><label>背景图片:</label><input type="file" id="bg-upload" accept="image/*" onchange="handleImageUpload('bg',this)"><button onclick="resetImage('bg')" style="margin-top:5px">恢复默认</button></div><div class="input-group"><label>卡背图案:</label><input type="file" id="cardback-upload" accept="image/*" onchange="handleImageUpload('cardback',this)"><button onclick="resetImage('cardback')" style="margin-top:5px">恢复默认</button></div><div class="section-title">🃏 牌面上传</div><div class="input-group"><label>上传牌面 (含ID文件名):</label><input type="file" id="deck-upload" accept="image/*" multiple onchange="handleBulkUpload(this)"><button onclick="clearCustomDeck()" style="margin-top:5px;color:#e94560">清除自定义</button></div><div class="section-title">💖 梦向档案</div><div class="input-group"><label>称呼:</label><input type="text" class="tarot-input" id="dream-name"></div><div class="input-group"><label>关系/备注:</label><textarea id="dream-info" class="tarot-textarea" style="height:60px"></textarea></div><div style="margin-top:20px;text-align:right"><button class="action-btn btn-secondary" onclick="closeTarotModal('tarot-settings-modal')">取消</button><button class="action-btn" onclick="saveTarotSettings()">保存</button></div></div></div>
+    <div id="history-modal" class="tarot-modal"><div class="tarot-modal-content"><h3>📜 历史记录</h3><div id="history-list"></div><button class="action-btn btn-secondary" onclick="closeTarotModal('history-modal')" style="margin-top:10px;width:100%">关闭</button></div></div>
+</div>
+
+<div id="screen-drama" class="app-screen">
+    <div class="app-header"><span class="back-btn" onclick="closeApp('drama')"><i class="fa-solid fa-chevron-left"></i> 返回</span><span class="screen-title">小剧场</span><span class="header-right" onclick="showDramaHistory()"><i class="fa-solid fa-clock-rotate-left"></i></span></div>
+    <div class="screen-content drama-container">
+        <div class="drama-card"><div class="drama-title">🎭 角色档案</div><div class="profile-row"><input type="text" class="profile-input" id="drama-user-name" placeholder="我" onblur="saveDramaProfile()"><input type="text" class="profile-input" id="drama-user-info" placeholder="设定" onblur="saveDramaProfile()"></div><div class="profile-row"><input type="text" class="profile-input" id="drama-target-name" placeholder="Ta" onblur="saveDramaProfile()"><input type="text" class="profile-input" id="drama-target-info" placeholder="设定" onblur="saveDramaProfile()"></div></div>
+        <div class="drama-card"><div class="drama-title">🎬 剧情 <div style="display:flex;gap:5px"><i class="fa-solid fa-file-import" onclick="document.getElementById('preset-upload').click()"></i><select id="drama-preset-select" style="width:100px;font-size:12px"><option value="default">默认文风</option></select></div></div><input type="file" id="preset-upload" accept=".json" style="display:none" onchange="importDramaPreset(this)"><textarea class="drama-textarea" id="drama-prompt" placeholder="剧情梗概..."></textarea><div class="drama-btn-group"><button class="drama-btn btn-random" onclick="randomDramaScenario()">🎲 随机</button><button class="drama-btn btn-generate" onclick="generateDrama()">✨ 生成</button></div><label class="nsfw-toggle"><input type="checkbox" id="drama-nsfw"> 允许NSFW</label></div>
+    </div>
+    <div class="novel-reader" id="novel-reader"><div class="novel-header"><span class="back-btn" onclick="closeNovelReader()"><i class="fa-solid fa-chevron-left"></i> 退出</span><span class="screen-title">阅读</span><span class="header-right" onclick="copyNovel()"><i class="fa-regular fa-copy"></i></span></div><div class="novel-theme-bar"><div class="theme-dot" style="background:#fff" onclick="setNovelTheme('theme-light')"></div><div class="theme-dot" style="background:#f4ecd8" onclick="setNovelTheme('theme-sepia')"></div><div class="theme-dot" style="background:#cce8cf" onclick="setNovelTheme('theme-green')"></div><div class="theme-dot" style="background:#1a1a1a" onclick="setNovelTheme('theme-dark')"></div></div><div class="novel-content theme-light" id="novel-content"></div></div>
+    <div class="modal" id="drama-history-modal"><div class="modal-content"><h3>📜 剧本历史</h3><div id="drama-history-list" style="max-height:300px;overflow-y:auto"></div><div class="modal-btns"><button class="btn btn-cancel" onclick="closeModal()">关闭</button></div></div></div>
+</div>
+
+<div id="screen-period" class="app-screen">
+    <div class="app-header"><span class="back-btn" onclick="closeApp('period')"><i class="fa-solid fa-chevron-left"></i> 返回</span><span class="screen-title">经期助手</span><span class="header-right"></span></div>
+    <div class="screen-content period-container">
+        <div class="period-card"><div class="period-main-info"><div class="period-phase-badge" id="period-phase-badge">...</div><div class="period-date-big" id="period-next-date">--月--日</div><div class="period-desc">预计下次</div></div><div class="period-input-row"><label>周期</label><input type="number" id="period-cycle-len" value="28" style="flex:1"></div><div class="period-history-section"><h4>📝 记录</h4><div class="period-input-group"><input type="date" id="period-add-start"><span>至</span><input type="date" id="period-add-end"><button class="btn-mini" onclick="addPeriodRecord()">+</button></div><div class="period-history-list" id="period-history-list"></div></div><button class="period-btn" onclick="analyzePeriod()">🔮 AI 分析</button></div>
+        <div id="period-result-area" style="display:none"><div class="ai-comfort-box"><div style="font-weight:bold;margin-bottom:5px" id="period-char-name">Ta 说:</div><div style="font-size:14px;color:#555" id="period-comfort-msg">...</div></div><div class="recipe-box"><div class="recipe-title"><i class="fa-solid fa-utensils"></i> 食谱</div><div style="font-size:14px;color:#444;white-space:pre-wrap" id="period-recipe">...</div></div></div>
+    </div>
+</div>
+
+<div id="screen-style" class="app-screen">
+    <div class="app-header"><span class="back-btn" onclick="closeApp('style')"><i class="fa-solid fa-chevron-left"></i>返回</span><span class="screen-title">美化中心</span><span class="header-right" onclick="saveStyle()"><i class="fa-solid fa-check"></i></span></div>
+    <div class="screen-content style-list"><div class="style-card"><div class="style-info"><label>全局壁纸</label><div class="file-upload-btn" onclick="document.getElementById('global-bg-upload').click()">上传</div><input type="file" id="global-bg-upload" accept="image/*" style="display:none" onchange="uploadGlobalBg(this)"></div></div><div class="style-card"><div class="style-info"><label>播放器封面</label><div class="file-upload-btn" onclick="document.getElementById('music-cover-upload').click()">上传</div><input type="file" id="music-cover-upload" accept="image/*" style="display:none" onchange="uploadMusicCover(this)"></div></div><!-- 原有的背景设置（可以保留） -->
+<div class="style-card">
+    <div class="style-info">
+        <label>做饭通话背景</label>
+        <div class="file-upload-btn" onclick="document.getElementById('call-bg-upload').click()">上传背景</div>
+        <input type="file" id="call-bg-upload" accept="image/*" style="display:none" onchange="uploadCallBg(this)">
+    </div>
+</div>
+
+<!-- 新增：做饭通话头像设置 (这就是你想要的) -->
+<div class="style-card">
+    <div class="style-info">
+        <label>做饭通话头像 (Ta)</label>
+        <div class="file-upload-btn" onclick="document.getElementById('call-avatar-upload').click()">上传头像</div>
+        <input type="file" id="call-avatar-upload" accept="image/*" style="display:none" onchange="uploadCallAvatar(this)">
+    </div>
+</div>
+    <!-- 这里是正确的结构 -->
+    <div id="style-app-list"></div>
+    <input type="file" id="app-icon-upload" accept="image/*" style="display:none">
+</div> <!-- 这里结束 screen-content -->
+</div> <!-- 这里结束 screen-style -->
+<!-- 修改后 (正确) -->
+
+<div id="screen-settings" class="app-screen">
+    <div class="app-header"><span class="back-btn" onclick="closeApp('settings')"><i class="fa-solid fa-chevron-left"></i>返回</span><span class="screen-title">系统设置</span></div>
+    <div class="screen-content" style="padding:20px;background:#f2f2f7"><div class="modal-content" style="width:100%;margin:0;box-shadow:none"><h3>AI 配置</h3><div class="setting-row"><label>接口地址</label><input type="text" id="api-endpoint" placeholder="https://api.openai.com/v1"></div><div class="setting-row"><label>API Key</label><input type="password" id="api-key" placeholder="sk-..."></div><div class="setting-row"><label>模型</label><select id="api-model"><option value="gpt-3.5-turbo">gpt-3.5-turbo</option><option value="gpt-4">gpt-4</option></select><button class="btn btn-confirm" style="margin-top:5px;padding:5px" onclick="fetchModels()">拉取模型</button></div><h3 style="margin-top:30px;border-top:1px solid #eee;padding-top:20px">备份 (含塔罗图)</h3><div class="setting-row"><div style="display:flex;gap:10px"><button class="btn btn-confirm" onclick="exportSystemData()">导出全量备份</button><button class="btn btn-cancel" onclick="document.getElementById('import-file').click()">导入恢复</button><input type="file" id="import-file" style="display:none" accept=".json" onchange="importSystemData(this)"></div></div><button class="btn btn-confirm" style="margin-top:20px" onclick="saveSystemSettings()">保存配置</button></div></div>
+</div>
+
+<div class="modal" id="line-settings-modal">
+    <div class="modal-content">
+        <h3>Line 设置</h3>
+        
+        <!-- 背景设置 -->
+        <div class="setting-row">
+            <label>聊天背景</label>
+            <div class="file-upload-btn" onclick="document.getElementById('line-bg-upload').click()">上传背景</div>
+            <input type="file" id="line-bg-upload" accept="image/*" style="display:none" onchange="uploadLineBg(this)">
+        </div>
+
+        <!-- 头像与框设置 (主要修改部分) -->
+        <div style="display:flex; gap:10px; border-bottom:1px dashed #eee; padding-bottom:15px; margin-bottom:15px;">
+            <div style="flex:1">
+                <label style="font-size:12px;color:#666">我 (右侧)</label>
+                <div class="file-upload-btn" onclick="document.getElementById('user-ava-upload').click()">头像</div>
+                <div class="file-upload-btn" style="margin-top:5px;background:#fff0f5" onclick="document.getElementById('user-frame-upload').click()">头像框</div>
+                <input type="file" id="user-ava-upload" accept="image/*" style="display:none" onchange="uploadAvatar('user',this)">
+                <input type="file" id="user-frame-upload" accept="image/*" style="display:none" onchange="uploadFrame('user',this)">
+            </div>
+            <div style="flex:1">
+                <label style="font-size:12px;color:#666">Ta (左侧)</label>
+                <div class="file-upload-btn" onclick="document.getElementById('contact-ava-upload').click()">头像</div>
+                <div class="file-upload-btn" style="margin-top:5px;background:#fff0f5" onclick="document.getElementById('contact-frame-upload').click()">头像框</div>
+                <input type="file" id="contact-ava-upload" accept="image/*" style="display:none" onchange="uploadAvatar('contact',this)">
+                <input type="file" id="contact-frame-upload" accept="image/*" style="display:none" onchange="uploadFrame('contact',this)">
+            </div>
+        </div>
+
+        <!-- 滑动条设置 -->
+        <div class="setting-row">
+            <label>回复延迟 (秒): <span id="delay-display"></span></label>
+            <div class="dual-slider-box">
+                <div class="slider-track-bg"></div><div class="slider-track-fill" id="delay-fill"></div>
+                <input type="range" id="delay-min-range" min="1" max="60" oninput="updateDualSlider('delay')">
+                <input type="range" id="delay-max-range" min="1" max="60" oninput="updateDualSlider('delay')">
+            </div>
+        </div>
+        <div class="setting-row">
+            <label>连发条数: <span id="count-display"></span></label>
+            <div class="dual-slider-box">
+                <div class="slider-track-bg"></div><div class="slider-track-fill" id="count-fill"></div>
+                <input type="range" id="count-min-range" min="1" max="10" oninput="updateDualSlider('count')">
+                <input type="range" id="count-max-range" min="1" max="10" oninput="updateDualSlider('count')">
+            </div>
+        </div>
+        <div class="setting-row">
+            <label>主动发信间隔 (分): <span id="idle-display"></span></label>
+            <div class="dual-slider-box">
+                <div class="slider-track-bg"></div><div class="slider-track-fill" id="idle-fill"></div>
+                <input type="range" id="idle-min-range" min="15" max="480" step="15" oninput="updateDualSlider('idle')">
+                <input type="range" id="idle-max-range" min="15" max="480" step="15" oninput="updateDualSlider('idle')">
+            </div>
+        </div>
+        <!-- ... 上面是原有的气泡CSS输入框 ... -->
+        <div class="setting-row">
+            <label>气泡CSS (左/右)</label>
+            <textarea id="line-css-left" class="setting-input" placeholder="左侧气泡CSS..." style="height:40px"></textarea>
+            <textarea id="line-css-right" class="setting-input" placeholder="右侧气泡CSS..." style="height:40px;margin-top:5px"></textarea>
+        </div>
+
+        <!-- 【新增】头像框 CSS 设置 -->
+        <div class="setting-row" style="background:#f9f9f9; padding:10px; border-radius:8px;">
+            <label>头像框微调 CSS (例如: width:150%)</label>
+            <textarea id="frame-css-left" class="setting-input" placeholder="Ta(左) 头像框 CSS..." style="height:40px"></textarea>
+            <textarea id="frame-css-right" class="setting-input" placeholder="我(右) 头像框 CSS..." style="height:40px;margin-top:5px"></textarea>
+        </div>
+        <!-- ... 下面是按钮 ... -->
+        <div class="setting-row"><button class="btn btn-danger" onclick="deleteOldLineChats()">清理旧消息</button></div>
+        <div class="modal-btns">
+            <button class="btn btn-cancel" onclick="closeModal()">取消</button>
+            <button class="btn btn-confirm" onclick="saveLineSettings()">保存</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="money-menu-modal"><div class="modal-content"><h3>记账设置</h3><div class="setting-row"><label>初始金额</label><input type="number" id="initial-balance-input" class="setting-input"></div><div class="setting-row"><label>历史报表</label><div style="display:flex;gap:5px"><select id="month-selector"></select><button class="btn btn-confirm" style="flex:0 0 60px" onclick="showPastMonthSummary()">查看</button></div></div><div class="modal-btns"><button class="btn btn-cancel" onclick="resetMoney()">清空</button><button class="btn btn-confirm" onclick="saveMoneySettings()">保存</button></div></div></div>
+<div class="modal" id="date-modal">
+    <div class="modal-content">
+        <h3>新建纪念日</h3>
+        <div class="setting-row"><label>标题</label><input type="text" id="date-title-input"></div>
+        <div class="setting-row"><label>日期</label><input type="date" id="date-val-input"></div>
+        
+        <!-- 🔴 新增：每年重复开关 -->
+        <div class="setting-row" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <label style="margin:0">重复</label>
+            <label style="font-size:14px;color:#333"><input type="checkbox" id="date-loop-check"> 每年重复 (生日/节日)</label>
+        </div>
+
+        <div class="setting-row"><label>背景</label><div class="file-upload-btn" onclick="document.getElementById('date-bg-upload').click()">上传</div><input type="file" id="date-bg-upload" accept="image/*" style="display:none" onchange="handleDateBg(this)"></div>
+        <div class="setting-row"><label>提醒</label><label><input type="checkbox" id="notify-day-before"> 前一天</label> <label><input type="checkbox" id="notify-same-day" checked> 当天</label></div>
+        <div class="modal-btns"><button class="btn btn-cancel" onclick="closeModal()">取消</button><button class="btn btn-confirm" onclick="saveDateItem()">保存</button></div>
+    </div>
+</div>
+<div class="modal" id="couple-settings-modal"><div class="modal-content"><h3>恋爱组件</h3><div class="setting-row"><label>日期</label><input type="date" id="couple-date-input"></div><div class="setting-row"><div style="display:flex;gap:10px"><button class="btn btn-cancel" onclick="document.getElementById('couple-upload-1').click()">左头像</button><button class="btn btn-cancel" onclick="document.getElementById('couple-upload-2').click()">右头像</button></div></div><div class="modal-btns"><button class="btn btn-cancel" onclick="closeModal()">取消</button><button class="btn btn-confirm" onclick="saveCoupleSettings()">保存</button></div></div></div>
+
+<script>
+// 在 script 标签开始处添加
+const tarotDeck78 = [
+    "愚人","魔术师","女祭司","皇后","皇帝","教皇","恋人","战车","力量","隐士","命运之轮","正义","倒吊人","死神","节制","恶魔","高塔","星星","月亮","太阳","审判","世界",
+    "权杖王牌","权杖二","权杖三","权杖四","权杖五","权杖六","权杖七","权杖八","权杖九","权杖十","权杖侍从","权杖骑士","权杖皇后","权杖国王",
+    "圣杯王牌","圣杯二","圣杯三","圣杯四","圣杯五","圣杯六","圣杯七","圣杯八","圣杯九","圣杯十","圣杯侍从","圣杯骑士","圣杯皇后","圣杯国王",
+    "宝剑王牌","宝剑二","宝剑三","宝剑四","宝剑五","宝剑六","宝剑七","宝剑八","宝剑九","宝剑十","宝剑侍从","宝剑骑士","宝剑皇后","宝剑国王",
+    "星币王牌","星币二","星币三","星币四","星币五","星币六","星币七","星币八","星币九","星币十","星币侍从","星币骑士","星币皇后","星币国王"
+];
+let currentTarotResult = ""; // 全局变量存塔罗结果
+const DB_NAME="PhoneOS_V6",STORE_NAME="SystemData",KEY="main_db";
+const PhoneDB = {
+    db: null,
+    init: function() {
+        return new Promise((resolve, reject) => {
+            const r = indexedDB.open(DB_NAME, 1);
+            r.onupgradeneeded = e => { e.target.result.createObjectStore(STORE_NAME) };
+            r.onsuccess = e => { this.db = e.target.result; resolve() };
+            r.onerror = e => reject(e)
+        })
+    },
+    // 修改处：让 save 方法返回 Promise，确保数据写入完成
+    save: function(d) {
+        return new Promise((resolve, reject) => {
+            if (this.db) {
+                const tx = this.db.transaction([STORE_NAME], "readwrite");
+                tx.oncomplete = () => resolve(); // 事务完成才算成功
+                tx.onerror = (e) => reject(e);
+                tx.objectStore(STORE_NAME).put(d, KEY);
+            } else {
+                resolve(); // 没数据库初始化时直接跳过
+            }
+        });
+    },
+    load: function() {
+        return new Promise((resolve, reject) => {
+            if (!this.db) return reject();
+            const r = this.db.transaction([STORE_NAME], "readonly").objectStore(STORE_NAME).get(KEY);
+            r.onsuccess = () => resolve(r.result);
+            r.onerror = () => reject()
+        })
+    }
+};
+const defaultData={
+    fridge: { 
+        condiments: { oil:true,oyster:false, soy:false, salt:true, sugar:false, vinegar:false, wine:false },
+        staples: { rice:false, noodles:0, bread:0 },
+        veg: [], 
+        meat: [],
+        history: []
+    },
+    words:{life:"嗯嗯\n想你\n抱抱",moneyOut:"剁手",moneyIn:"发财",note:"开心"},
+    line:{chats:[],bg:"",userAvatar:"",contactAvatar:"",stickers:[],delayMin:1,delayMax:5,replyCountMin:1,replyCountMax:2,status:'offline',idleMin:15,idleMax:60},
+    money:{initial:0,bills:[]},
+    mail:[],
+    photos:[],
+    dates:[],
+    settings:{apiEndpoint:"https://api.openai.com/v1",apiKey:"",apiModel:"gpt-3.5-turbo"},
+    drama:{userProfile:{},targetProfile:{},presets:[],history:[]},
+    tarot:{},
+    period:{history:[],cycleLen:28},
+    style:{apps:{}},
+    widgets:{couple:{}}
+};
+let db=defaultData,idleTimer,selectedMsgIndex=-1,isSelectMode=false,selectedIndices=new Set(),pendingQuoteText=null,isStickerEditMode=false,selectedStickers=new Set(),currentAlbumId,currentSlideImg,tempDateBg,mailSender='me',currentEditingAppId;
+let linePageSize = 20; // 控制 Line 显示条数，默认20
+
+async function initApp(){
+    try{await PhoneDB.init();const s=await PhoneDB.load();if(s){db=s;checkDataStructure()} await initTarotDB();await loadCustomAssets();updateGlobalStyle();applyLineCustomCSS();initWidgets();initWeather()}catch(e){console.log(e)}
+    document.getElementById('boot-screen').style.opacity='0';setTimeout(()=>document.getElementById('boot-screen').remove(),500);updateClock();setInterval(updateClock,1000);setInterval(checkReminders,60000);if(db.line.status==='online')startIdleLoop();
+}
+function checkReminders() {
+    const t = new Date(); // 今天
+    const tm = new Date(t); tm.setDate(t.getDate() + 1); // 明天
+
+    db.dates.forEach(d => {
+        const dt = new Date(d.date);
+        
+        // 只比较月份和日期 (Month从0开始，Date是日期)
+        const isSameDay = (dt.getDate() === t.getDate() && dt.getMonth() === t.getMonth());
+        const isDayBefore = (dt.getDate() === tm.getDate() && dt.getMonth() === tm.getMonth());
+
+        // 无论是否循环，只要月日对上了就提醒
+        if (d.notify.same && isSameDay) {
+            showNotification("纪念日提醒", `${d.title} 就是今天！`, () => openApp('date'));
+        }
+        if (d.notify.before && isDayBefore) {
+            showNotification("明日提醒", `${d.title} 明天就到了`, () => openApp('date'));
+        }
+    });
+}
+
+function processImage(file,maxWidth,quality,callback){const r=new FileReader();r.readAsDataURL(file);r.onload=e=>{const img=new Image();img.src=e.target.result;img.onload=()=>{let w=img.width,h=img.height;if(w>maxWidth){h=Math.round(h*maxWidth/w);w=maxWidth}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);callback(c.toDataURL(file.type==='image/png'?'image/png':'image/jpeg',quality))}}}
+function openApp(id){document.getElementById(`screen-${id}`).classList.add('active');if(id==='fridge') renderFridge();if(id==='line'){
+    linePageSize = 20; // 每次打开重置为20条
+
+    renderLineChat();
+    renderStickerPanel();
+}if(id==='money')renderMoney();if(id==='words')initWords();if(id==='note')drawNote();if(id==='mail')renderMail();if(id==='photo')renderAlbums();if(id==='date')renderDates();if(id==='settings')initSettingsUI();if(id==='tarot')shuffleDeck();if(id==='drama')initDramaUI();if(id==='period')initPeriodUI();if(id==='style')renderStyleApp()}
+function closeApp(id){document.getElementById(`screen-${id}`).classList.remove('active')}
+function closeModal(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('active'))}
+// 【新增】小剧场续写弹窗逻辑
+function promptContinue(id){
+    const instr = prompt("请输入续写指令 (例如: 接上文，两人发生了争吵):");
+    if(instr){
+        // 将指令存入输入框，作为本次生成的 Prompt
+        document.getElementById('drama-prompt').value = instr;
+        // 调用生成函数，true 表示是续写，传入剧本ID
+        generateDrama(true, id);
+    }
+}
+function initWidgets(){document.getElementById('widget-memo-text').value=db.widgets.memo||"";updateCoupleWidget()}
+function saveMemoWidget(){db.widgets.memo=document.getElementById('widget-memo-text').value;saveData()}
+function openCoupleSettings(){document.getElementById('couple-settings-modal').classList.add('active');document.getElementById('couple-date-input').value=db.widgets.couple.date||""}
+function uploadCoupleAvatar(i,inp){processImage(inp.files[0],300,0.8,b=>{if(i===1)db.widgets.couple.avatar1=b;else db.widgets.couple.avatar2=b;updateCoupleWidget()})}
+function saveCoupleSettings(){db.widgets.couple.date=document.getElementById('couple-date-input').value;saveData();updateCoupleWidget();closeModal()}
+function updateCoupleWidget(){const w=db.widgets.couple,a1=document.getElementById('couple-ava-1'),a2=document.getElementById('couple-ava-2');if(w.avatar1)a1.style.backgroundImage=`url('${w.avatar1}')`;if(w.avatar2)a2.style.backgroundImage=`url('${w.avatar2}')`;if(w.date){const d=Math.floor((new Date()-new Date(w.date))/(86400000));document.getElementById('couple-days-count').innerText=d>0?d:0}}
+
+function initWeather(){if("geolocation" in navigator)navigator.geolocation.getCurrentPosition(p=>getWeather(p.coords.latitude,p.coords.longitude),()=>errW());else errW()}
+function errW(){document.getElementById('w-loc').innerText="N/A"}
+async function getWeather(lat,lon){try{const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`),d=await r.json();document.getElementById('w-temp').innerText=Math.round(d.current_weather.temperature);document.getElementById('w-loc').innerText="本地";const c=d.current_weather.weathercode,map={0:'sun',1:'cloud-sun',2:'cloud-sun',3:'cloud',45:'smog',61:'cloud-rain',80:'cloud-showers-heavy',95:'bolt'};document.getElementById('w-icon').className=`fa-solid fa-${map[c]||'cloud'} weather-icon`;document.getElementById('w-desc').innerText=c===0?'晴':(c<4?'多云':'雨/雪')}catch(e){errW()}}
+
+function showNotification(t,d,cb){const b=document.getElementById('global-notify');document.getElementById('notif-title').innerText=t;document.getElementById('notif-desc').innerText=d;b.onclick=()=>{if(cb)cb();b.classList.remove('show')};b.classList.add('show');setTimeout(()=>b.classList.remove('show'),5000)}
+
+function saveLineContactName(){db.line.contactName=document.getElementById('line-contact-name').innerText;saveData()}
+// --- 增强版：Line 渲染 (含头像框、拍一拍、引用) ---
+
+// --- 新增：加载更多历史消息 ---
+function loadLineHistory() {
+    const list = document.getElementById('line-chat-list');
+    // 1. 记住当前的高度
+    const oldHeight = list.scrollHeight;
+
+    // 2. 增加显示数量 (每次加20条)
+    linePageSize += 20;
+
+    // 3. 重新渲染 (传入 true 表示这是在加载历史)
+    renderLineChat(true);
+
+    // 4. 修正滚动条位置，保持视觉位置不变
+    const newHeight = list.scrollHeight;
+    list.scrollTop = newHeight - oldHeight;
+}
+
+// --- 最终优化版：分页渲染 Line 消息 ---
+function renderLineChat(isHistoryLoad = false){
+    if(db.line.contactName) document.getElementById('line-contact-name').innerText = db.line.contactName;
+    const l = document.getElementById('line-chat-list');
+    
+    // 清空列表
+    l.innerHTML = '';
+    
+    // 设置背景
+    if(db.line.bg) document.getElementById('line-bg-layer').style.backgroundImage = `url('${db.line.bg}')`;
+    
+    updateStatusUI(); 
+    
+    // 1. 计算切片
+    const allChats = db.line.chats;
+    const totalCount = allChats.length;
+    // 如果总数小于分页数，就从0开始；否则从 总数-分页数 开始
+    const startIndex = Math.max(0, totalCount - linePageSize);
+    const chatsToShow = allChats.slice(startIndex);
+
+    // 2. 【关键】如果还有更早的消息，显示“加载更多”按钮
+    if(startIndex > 0) {
+        const loadBtn = document.createElement('div');
+        loadBtn.style.cssText = "text-align:center; padding:15px; cursor:pointer; font-size:12px; color:#888; display:flex; justify-content:center; align-items:center; gap:5px; margin-bottom:10px;";
+        loadBtn.innerHTML = `<span style="background:rgba(255,255,255,0.4); padding:4px 12px; border-radius:20px; backdrop-filter:blur(5px);">🕒 点击查看更多 (${startIndex}条未读)</span>`;
+        
+        loadBtn.onclick = function() {
+            this.innerHTML = "加载中...";
+            // 延时一小会儿，给UI反应时间
+            setTimeout(loadLineHistory, 50); 
+        };
+        l.appendChild(loadBtn);
+    }
+
+    // 3. 循环渲染消息
+    chatsToShow.forEach((c, relativeIndex)=>{
+        // 计算真实索引
+        const i = startIndex + relativeIndex;
+
+        // === 系统消息 ===
+        if(c.type === 'system') {
+            const r = document.createElement('div');
+            r.className = 'chat-row system'; 
+            r.innerHTML = `<div class="chat-bubble" style="background:transparent!important;color:#999!important;font-size:12px!important;box-shadow:none!important;border:none!important;">${c.text}</div>`;
+            if(isSelectMode){
+                r.classList.add('selecting');
+                if(selectedIndices.has(i)) r.classList.add('selected');
+                r.onclick = () => toggleSelection(i);
+            } else {
+                r.oncontextmenu = e => { e.preventDefault(); showContextMenu(e,i); };
+            }
+            l.appendChild(r);
+            return; 
+        }
+
+        // === 普通消息 ===
+        const r = document.createElement('div');
+        r.className = `chat-row ${c.role}`;
+        
+        if(isSelectMode){
+            r.classList.add('selecting');
+            if(selectedIndices.has(i)) r.classList.add('selected');
+            r.onclick = () => toggleSelection(i);
+        } else {
+            r.oncontextmenu = e => { e.preventDefault(); showContextMenu(e,i); };
+            r.ondblclick = (e) => {
+                if(e.target.closest('.avatar-container')) return;
+                selectedMsgIndex = i; 
+                prepareQuote();       
+            };
+        }
+        
+        const avaImg = c.role === 'right' ? db.line.userAvatar : db.line.contactAvatar;
+        
+        const avatarHtml = `
+            <div class="avatar-container" 
+                 style="flex-shrink:0;${c.role==='right'?'order:2':''}" 
+                 ondblclick="handlePaiYiPai('${c.role}', this, event)">
+                <div class="chat-avatar-img" style="${avaImg ? 'background-image:url('+avaImg+')' : 'background-color:#ccc'}"></div>
+                <div class="avatar-frame-overlay ${c.role}"></div>
+            </div>
+        `;
+
+        r.innerHTML = `
+            <div class="select-checkbox"></div>
+            ${avatarHtml}
+            <div class="chat-bubble ${c.role}">
+                ${c.quote ? `<div class="quote-container"><div class="quote-title">引用</div><div class="quote-content">${c.quote}</div></div>` : ''}
+                ${c.type==='image' ? `<img src="${c.text}" class="msg-img">` : c.type==='sticker' ? `<img src="${c.text}" class="msg-sticker">` : c.text}
+            </div>`;
+        l.appendChild(r);
+    });
+    
+    // 4. 滚动处理
+    // 只有在非多选模式，且不是加载历史时（即刚打开或发新消息），才滚到底部
+    if(!isSelectMode && !isHistoryLoad) {
+        l.scrollTop = l.scrollHeight;
+    }
+}
+      
+function prepareQuote(){const t=db.line.chats[selectedMsgIndex];pendingQuoteText=t.type==='text'?t.text:'[媒体]';document.getElementById('context-menu').classList.remove('active');document.getElementById('reply-bar').classList.add('active');document.getElementById('reply-text-preview').innerText=pendingQuoteText}
+function cancelQuote(){pendingQuoteText=null;document.getElementById('reply-bar').classList.remove('active')}
+function toggleStickerPanel(){const p=document.getElementById('sticker-panel');p.classList.toggle('active');if(!p.classList.contains('active'))exitStickerEditMode()}
+function renderStickerPanel(){
+    const p=document.getElementById('sticker-panel');p.querySelectorAll('.sticker-wrapper:not(.add-sticker-btn)').forEach(e=>e.remove());
+    document.getElementById('sticker-edit-bar').classList.toggle('active',isStickerEditMode);document.querySelector('.add-sticker-btn').style.display=isStickerEditMode?'none':'flex';document.getElementById('sticker-sel-count').innerText=selectedStickers.size;
+    db.line.stickers.forEach((s,i)=>{
+        const w=document.createElement('div');w.className='sticker-wrapper';if(isStickerEditMode&&selectedStickers.has(i))w.classList.add('selected');
+        w.innerHTML=`<img src="${s}" class="sticker-item"><div class="sticker-select-mask"></div>`;
+        w.oncontextmenu=e=>{e.preventDefault();if(!isStickerEditMode){enterStickerEditMode();toggleStickerSelection(i)}};
+        w.onclick=()=>{if(isStickerEditMode)toggleStickerSelection(i);else{lineSendMessage('sticker',s);toggleStickerPanel()}};
+        p.appendChild(w)
+    })
+}
+function enterStickerEditMode(){isStickerEditMode=true;selectedStickers.clear();renderStickerPanel()}
+function exitStickerEditMode(){isStickerEditMode=false;selectedStickers.clear();renderStickerPanel()}
+function toggleStickerSelection(i){if(selectedStickers.has(i))selectedStickers.delete(i);else selectedStickers.add(i);renderStickerPanel()}
+function deleteSelectedStickers(){if(confirm("确定删除?")){Array.from(selectedStickers).sort((a,b)=>b-a).forEach(i=>db.line.stickers.splice(i,1));saveData();exitStickerEditMode()}}
+function addStickerFile(inp){Array.from(inp.files).forEach(f=>processImage(f,200,0.6,b=>{db.line.stickers.push(b);saveData();renderStickerPanel()}));inp.value=''}
+function lineSendMessage(type='text',content=null){const inp=document.getElementById('line-input'),txt=content||inp.value;if(!txt&&type==='text'){triggerReply();return}const m={role:'right',text:txt,type:type};if(pendingQuoteText){m.quote=pendingQuoteText;cancelQuote()}db.line.chats.push(m);if(type==='text')inp.value='';renderLineChat();triggerReply()}
+function sendPhoto(inp){Array.from(inp.files).forEach(f=>processImage(f,800,0.7,b=>lineSendMessage('image',b)));inp.value=''}
+function triggerReply(){
+    setTimeout(()=>{
+        const cnt=Math.floor(Math.random()*(db.line.replyCountMax-db.line.replyCountMin+1))+db.line.replyCountMin;
+        const lines=db.words.life.split('\n').filter(t=>t.trim()!=='');
+        for(let i=0;i<cnt;i++){
+            setTimeout(()=>{
+                let type='text',txt=lines[Math.floor(Math.random()*lines.length)];
+                if(db.line.stickers.length>0&&Math.random()<0.2){type='sticker';txt=db.line.stickers[Math.floor(Math.random()*db.line.stickers.length)]}
+                const msg={role:'left',text:txt,type:type};
+                if(db.line.chats.length>0&&Math.random()<0.15){const u=db.line.chats.filter(m=>m.role==='right').slice(-8);if(u.length)msg.quote=u[Math.floor(Math.random()*u.length)].type==='text'?u[0].text:'[媒体]'}
+                db.line.chats.push(msg);saveData();
+                if(document.getElementById('screen-line').classList.contains('active'))renderLineChat();
+                else showNotification(db.line.contactName||"Ta",type==='text'?txt:'[图片]',()=>openApp('line'))
+            },i*1500)
+        }
+    }, (Math.random() * (db.line.delayMax - db.line.delayMin) + db.line.delayMin) * 1000) 
+    // 上面这行修正了逻辑：(随机数 * 差值 + 最小值) * 1000毫秒
+}
+function showContextMenu(e,i){selectedMsgIndex=i;const m=document.getElementById('context-menu');let x=e.clientX,y=e.clientY;if(x>window.innerWidth-120)x-=120;if(y>window.innerHeight-50)y-=50;m.style.left=x+'px';m.style.top=y+'px';m.classList.add('active');setTimeout(()=>document.addEventListener('click',()=>m.classList.remove('active'),{once:true}),100)}
+function enterSelectMode(){isSelectMode=true;selectedIndices.clear();document.getElementById('context-menu').classList.remove('active');document.getElementById('batch-bar').classList.add('active');document.getElementById('input-area').style.display='none';renderLineChat()}
+function exitSelectMode(){isSelectMode=false;selectedIndices.clear();document.getElementById('batch-bar').classList.remove('active');document.getElementById('input-area').style.display='flex';renderLineChat()}
+function toggleSelection(i){if(selectedIndices.has(i))selectedIndices.delete(i);else selectedIndices.add(i);renderLineChat()}
+function batchDeleteMsg(){if(selectedIndices.size&&confirm("删除选中?")){Array.from(selectedIndices).sort((a,b)=>b-a).forEach(i=>db.line.chats.splice(i,1));saveData();exitSelectMode()}}
+function deleteSingleMessage(){if(selectedMsgIndex>-1)db.line.chats.splice(selectedMsgIndex,1);saveData();renderLineChat()}
+function deleteOldLineChats(){if(confirm("清理旧记录?")){db.line.chats.splice(0,80);saveData();renderLineChat();closeModal()}}
+function toggleLineStatus(){db.line.status=db.line.status==='online'?'offline':'online';updateStatusUI();saveData();if(db.line.status==='online')startIdleLoop();else clearTimeout(idleTimer)}
+function updateStatusUI(){const d=document.getElementById('line-status-dot'),l=document.getElementById('line-status-label');if(db.line.status==='online'){d.classList.add('online');l.innerText='在线'}else{d.classList.remove('online');l.innerText='离线'}}
+function startIdleLoop(){idleTimer=setTimeout(()=>{if(db.line.status==='online'){triggerReply();startIdleLoop()}},Math.random()*((db.line.idleMax-db.line.idleMin)*60000)+(db.line.idleMin*60000))}
+
+// --- 修复版：打开设置 (解决退后台重置问题) ---
+function openLineSettings(){
+    document.getElementById('line-settings-modal').classList.add('active');
+    // 1. 显式把数据库的值填入输入框
+    document.getElementById('delay-min-range').value = db.line.delayMin || 1;
+    document.getElementById('delay-max-range').value = db.line.delayMax || 5;
+    document.getElementById('count-min-range').value = db.line.replyCountMin || 1;
+    document.getElementById('count-max-range').value = db.line.replyCountMax || 2;
+    document.getElementById('idle-min-range').value = db.line.idleMin || 15;
+    document.getElementById('idle-max-range').value = db.line.idleMax || 60;
+
+    // 2. 更新滑块
+    ['delay','count','idle'].forEach(t=>updateDualSlider(t));
+    
+    // 3. 填入CSS
+    document.getElementById('line-css-left').value = db.line.cssLeft || '';
+    document.getElementById('line-css-right').value = db.line.cssRight || '';
+
+    // 【新增】填入头像框 CSS
+    document.getElementById('frame-css-left').value = db.line.cssFrameLeft || '';
+    document.getElementById('frame-css-right').value = db.line.cssFrameRight || '';
+}
+function uploadLineBg(i){processImage(i.files[0],800,0.7,b=>{db.line.bg=b;saveData();document.getElementById('line-bg-layer').style.backgroundImage=`url('${b}')`})}
+function uploadAvatar(t,i){processImage(i.files[0],300,0.7,b=>{if(t==='user')db.line.userAvatar=b;else db.line.contactAvatar=b;saveData()})}
+function updateDualSlider(t){
+    const min=document.getElementById(`${t}-min-range`),max=document.getElementById(`${t}-max-range`);
+    let v1=parseInt(min.value),v2=parseInt(max.value);if(v1>v2)[v1,v2]=[v2,v1];
+    if(t==='delay'){db.line.delayMin=v1;db.line.delayMax=v2}else if(t==='count'){db.line.replyCountMin=v1;db.line.replyCountMax=v2}else{db.line.idleMin=v1;db.line.idleMax=v2}
+    document.getElementById(`${t}-fill`).style.left=(v1/min.max*100)+"%";document.getElementById(`${t}-fill`).style.width=((v2-v1)/min.max*100)+"%";
+    document.getElementById(`${t}-display`).innerText=t==='idle'?`${v1}-${v2}分`:`${v1}-${v2}`;
+}
+function saveLineSettings(){
+    db.line.cssLeft = document.getElementById('line-css-left').value;
+    db.line.cssRight = document.getElementById('line-css-right').value;
+    
+    // 【新增】保存头像框 CSS
+    db.line.cssFrameLeft = document.getElementById('frame-css-left').value;
+    db.line.cssFrameRight = document.getElementById('frame-css-right').value;
+
+    applyLineCustomCSS();
+    saveData();
+    closeModal();
+}
+function applyLineCustomCSS(){
+    // 1. 获取用户通过上传按钮上传的图片 (Blob URL)
+    // 如果有上传，生成 background-image 规则；如果没有，留空
+    const leftFrameBg = db.line.contactFrame ? `background-image: url('${db.line.contactFrame}');` : '';
+    const rightFrameBg = db.line.userFrame ? `background-image: url('${db.line.userFrame}');` : '';
+
+    // 2. 将内容注入到页面顶部的 <style id="line-custom-css"> 中
+    document.getElementById('line-custom-css').innerHTML = `
+        /* 气泡 CSS */
+        #screen-line .chat-bubble.left { ${db.line.cssLeft || ''} }
+        #screen-line .chat-bubble.right { ${db.line.cssRight || ''} }
+        
+        /* --- 头像框 CSS (核心修改) --- */
+        /* Ta (左侧) 的头像框 */
+        #screen-line .chat-row.left .avatar-frame-overlay { 
+            ${leftFrameBg} /* 优先应用上传的图片 */
+            ${db.line.cssFrameLeft || ''} /* 然后应用你在设置里写的微调CSS (可覆盖上面的) */
+        }
+        
+        /* 我 (右侧) 的头像框 */
+        #screen-line .chat-row.right .avatar-frame-overlay { 
+            ${rightFrameBg}
+            ${db.line.cssFrameRight || ''} 
+        }
+    `;
+}
+const astroData={p:[{n:"太阳",m:"意志"},{n:"月亮",m:"情绪"},{n:"水星",m:"沟通"},{n:"金星",m:"爱情"},{n:"火星",m:"行动"},{n:"木星",m:"幸运"},{n:"土星",m:"考验"}],s:[{n:"白羊",m:"冲动"},{n:"金牛",m:"稳重"},{n:"双子",m:"多变"},{n:"巨蟹",m:"敏感"},{n:"狮子",m:"自信"},{n:"处女",m:"细节"},{n:"天秤",m:"平衡"},{n:"天蝎",m:"深刻"},{n:"射手",m:"自由"},{n:"摩羯",m:"务实"},{n:"水瓶",m:"独特"},{n:"双鱼",m:"包容"}],h:Array.from({length:12},(_,i)=>({n:`${i+1}宫`,m:["自我","财","信","家","爱","劳","伴","疾","远","业","社","隐"][i]}))};
+let currentMailId,currentDiceResult;
+function renderMail(){const l=document.getElementById('mail-list');l.innerHTML='';if(!db.mail.length){l.innerHTML='<div style="width:100%;text-align:center;color:#999">空</div>';return}db.mail.slice().reverse().forEach(m=>{const e=document.createElement('div');e.className='mail-envelope';e.innerHTML=`<div class="mail-flap"></div><div class="mail-envelope-inner"><div class="mail-info-text"><div class="mail-sender-name">From: ${m.sender==='me'?'我':'Ta'}</div><div class="mail-date-label">${new Date(m.date).toLocaleDateString()}</div></div></div><div class="mail-delete-btn" onclick="deleteMail(${m.id})">删除</div>`;e.onclick=()=>openReadScreen(m);l.appendChild(e)})}
+// 【修改】打开读信：切换信纸样式 + 愚人众印章
+// === 修改后的读信函数 (支持随机印章 + 随机深浅) ===
+function openReadScreen(m){
+    currentMailId = m.id;
+    const screen = document.getElementById('read-screen');
+    const paper = screen.querySelector('.letter-paper');
+    const contentDiv = document.getElementById('read-content-text');
+    
+    screen.classList.add('active');
+    document.getElementById('read-title').innerText = m.sender === 'me' ? '写给Ta' : 'Ta的来信';
+    
+    // 填入信件内容
+    contentDiv.innerText = m.content;
+    
+    // 重置上半部分样式
+    paper.classList.remove('fatui-theme');
+    contentDiv.classList.remove('handwriting-text');
+    
+    const c = document.getElementById('reply-container');
+    c.innerHTML = '';
+
+    if(m.sender === 'me'){
+        if(m.reply){
+            // === 重点修改开始 ===
+            let giftHtml = '';
+            
+            if(m.reply.gift) {
+                // 1. 印章图片列表
+                const stampList = [
+                    "https://i.postimg.cc/6q5L9B2K/0aaeafcfda7122b5783216d796d4f889.png",
+                    "https://i.postimg.cc/BbQcqJLq/68f251b5e016b31d03632fc2e59e6bb1.png",
+                    "https://i.postimg.cc/0j2d89M9/e21f019013b350b8f79f5510f4594110.png",
+                    "https://i.postimg.cc/BbQcqJLs/fe1348d125e5c9ef3495f098ae2bf36e.png"
+                ];
+                
+                // 2. 随机选一张图
+                const randomUrl = stampList[Math.floor(Math.random() * stampList.length)];
+                
+                // 3. 【新增】随机深浅 (透明度)
+                // Math.random() * 0.4 + 0.55 表示范围在 0.55(较浅) 到 0.95(较深) 之间
+                const randomOpacity = (Math.random() * 0.4 + 0.55).toFixed(2);
+                
+                // 4. 将图片和透明度同时写入 style
+                giftHtml = `<div class="gift-stamp" 
+                                 style="background-image: url('${randomUrl}'); opacity: ${randomOpacity};" 
+                                 onclick="showGiftDetail('${m.id}')">
+                            </div>`;
+            }
+            // === 修改结束 ===
+            
+            // 构造回信区域
+            c.innerHTML = `
+            <div class="reply-section">
+                <div style="border-bottom: 1px solid rgba(0,0,0,0.1); margin-bottom:15px; padding-bottom:5px; font-size:10px; color:rgba(0,0,0,0.4); letter-spacing:2px;">
+                    REPLY / LETTER
+                </div>
+                <div class="reply-content">
+                    ${m.reply.content}
+                </div>
+                <div class="reply-delete" onclick="deleteReply(${m.id})" style="background:#ff3b30; top:-10px; right:-10px; border:2px solid #fff;">✖</div>
+                ${giftHtml}
+            </div>`;
+        } else {
+            c.innerHTML = `<div class="reply-btn" style="background:#5e4b8a; color:#fff;" onclick="openDiceModal()">✨ 投掷占星骰 (获取回信)</div>`;
+        }
+    }
+}
+function showGiftDetail(mailId){
+    // 查找对应邮件
+    const m = db.mail.find(x => x.id == mailId);
+    
+    if(m && m.reply && m.reply.gift){
+        const gift = m.reply.gift;
+        const dateStr = new Date(m.date).toLocaleDateString();
+        
+        // 获取全屏显示的容器
+        const scrollArea = document.querySelector('.gift-scroll-area');
+        
+        // 生成横向发票的 HTML
+        // 我们不使用原本的 id="gift-name-display" 那些元素了，而是直接重写 innerHTML
+        scrollArea.innerHTML = `
+            <div style="padding-top: 50px;">
+                <div class="invoice-ticket">
+                    <div class="invoice-stub">RECEIPT // GIFT</div>
+                    <div class="invoice-body">
+                        <div class="invoice-header">
+                            <div class="invoice-title">INVOICE</div>
+                            <div class="invoice-no">NO.${m.id.toString().slice(-6)}</div>
+                        </div>
+                        
+                        <div class="invoice-row" style="color:#666; font-size:12px;">
+                            <span>DATE: ${dateStr}</span>
+                            <span>FROM: ${db.drama.targetProfile.name || 'Ta'}</span>
+                        </div>
+                        
+                        <div class="invoice-divider"></div>
+                        
+                        <div class="invoice-row" style="align-items:center;">
+                            <span class="invoice-item-name">${gift.name}</span>
+                            <span style="font-weight:bold;">1 pc.</span>
+                        </div>
+                        
+                        <div class="invoice-row">
+                            <span style="font-size:12px; color:#555;">Note: ${gift.note}</span>
+                        </div>
+                        
+                        <div class="invoice-divider"></div>
+                        
+                        <div class="invoice-row">
+                            <span>TOTAL</span>
+                            <span style="font-weight:bold; font-size:18px;">Priceless</span>
+                        </div>
+                        
+                        <!-- 占卜理由区域 -->
+                        <div class="invoice-reason-box">
+                            <strong>🔮 购买理由 (占卜推演):</strong><br>
+                            ${gift.reason}
+                        </div>
+                    </div>
+                    
+                    <!-- 印章 -->
+                    <div class="invoice-stamp">PAID</div>
+                </div>
+                
+                <div style="text-align:center; margin-top:20px; color:#999; font-size:12px;">
+                    - 点击右上角关闭 -
+                </div>
+            </div>
+        `;
+        
+        // 显示全屏弹窗
+        document.getElementById('gift-screen').classList.add('active');
+    }
+}
+function closeGiftScreen(){
+    document.getElementById('gift-screen').classList.remove('active');
+}
+function closeReadScreen(){document.getElementById('read-screen').classList.remove('active')}
+function deleteMail(id){if(confirm("删除?")){db.mail=db.mail.filter(m=>m.id!==id);saveData();renderMail();event.stopPropagation()}}
+function openWriteScreen(){
+    document.getElementById('write-screen').classList.add('active');
+    document.getElementById('mail-input').value='';
+    updateSenderUI();
+    // 确保写信时移除愚人众样式
+    document.querySelector('#write-screen .letter-paper').classList.remove('fatui-theme');
+}
+function closeWriteScreen(){document.getElementById('write-screen').classList.remove('active')}
+function toggleSender(){mailSender=mailSender==='me'?'other':'me';updateSenderUI()}
+function updateSenderUI(){document.getElementById('sender-toggle').innerText="From: "+(mailSender==='me'?'我':'Ta')}
+function saveMail(){const c=document.getElementById('mail-input').value;if(!c)return;db.mail.push({id:Date.now(),sender:mailSender,content:c,date:Date.now()});saveData();renderMail();closeWriteScreen()}
+function openDiceModal(){document.getElementById('dice-modal').classList.add('active');document.getElementById('dice-result-area').style.display='none'}
+function closeDiceModal(){document.getElementById('dice-modal').classList.remove('active')}
+function throwDice(){
+    // 1. 占星骰逻辑
+    const p=astroData.p[Math.floor(Math.random()*7)];
+    const s=astroData.s[Math.floor(Math.random()*12)];
+    const h=astroData.h[Math.floor(Math.random()*12)];
+    currentDiceResult={p,s,h};
+    
+    // 2. 随机抽一张塔罗牌
+    currentTarotResult = tarotDeck78[Math.floor(Math.random() * tarotDeck78.length)];
+
+    // 3. 更新界面
+    document.getElementById('dice-planet').innerText=p.n;
+    document.getElementById('dice-sign').innerText=s.n;
+    document.getElementById('dice-house').innerText=h.n;
+    
+    // 提示信息包含塔罗牌
+    document.getElementById('dice-meaning').innerText=`${p.m} + ${s.m} + ${h.m} | 🎴 暗示: ${currentTarotResult}`;
+    document.getElementById('dice-result-area').style.display='block';
+}
+function openWriteReplyManual(){const r=prompt("回信内容:");if(r)saveReply(r,"手动撰写")}
+// 【重写】AI回信：人设 + 占星骰驱动
+async function callAIGenerateReply(){
+    if(!db.settings.apiKey) return alert("请先在系统设置中配置 API Key");
+    
+    const mail = db.mail.find(m => m.id === currentMailId);
+    
+    // 1. 获取人设
+    const targetName = db.drama.targetProfile.name || "Ta";
+    const targetInfo = db.drama.targetProfile.info || "神秘";
+    const userName = db.drama.userProfile.name || "我";
+    
+    // 2. 获取占星骰与塔罗结果 (这是回信的核心依据)
+    // 假如用户没投骰子，给个默认值
+    if(!currentDiceResult) { alert("请先投掷骰子获取指引！"); return; }
+    
+    const astroStr = `【星象指引】：行星[${currentDiceResult.p.n}-${currentDiceResult.p.m}] 落入星座[${currentDiceResult.s.n}-${currentDiceResult.s.m}] 第[${currentDiceResult.h.n}]`;
+    const tarotStr = `【塔罗暗示】：${currentTarotResult}`;
+    
+    const btn = document.querySelector(".dice-opt-btn[style*='e94560']"); // 获取AI按钮
+    const oldText = btn.innerText;
+    btn.innerText = "正在以此星象书写...";
+    
+    const systemPrompt = `
+    你正在扮演角色：${targetName}。设定：${targetInfo}。
+    你正在给${userName}回信。
+    
+    【核心指令】
+    本次回信的内容、情绪和态度，必须完全基于以下的占卜结果：
+    ${astroStr}
+    ${tarotStr}
+    
+    解释：这组星象和塔罗牌代表了${targetName}此刻对${userName}的真实想法和潜意识情绪。
+    请解读这个占卜结果，并把它转化为${targetName}会说的话。
+    (例如：如果是火星+白羊，回信应该热情、冲动或带有攻击性；如果是土星+摩羯，回信应该克制、冷淡或谈论责任。)
+    
+    【附件礼物】
+    结合上述星象含义，构思一个符合人设的礼物。
+    
+    【输出格式】
+    必须返回纯 JSON (不要Markdown)：
+    {
+        "letter": "回信正文(语气要像真人手写，字数适中)...",
+        "gift_name": "礼物名称",
+        "gift_note": "关于这个礼物的简短随笔(50字左右)...",
+        "gift_reason": "用占卜师口吻解释：因为${astroStr}，所以我送你这个..."
+    }
+    `;
+
+    try {
+        const r = await fetch(`${db.settings.apiEndpoint}/chat/completions`,{
+            method:'POST',
+            headers:{'Content-Type':'application/json','Authorization':`Bearer ${db.settings.apiKey}`},
+            body:JSON.stringify({
+                model: db.settings.apiModel,
+                messages: [
+                    {role:"system", content:systemPrompt},
+                    {role:"user", content: `我的来信内容: ${mail.content}`}
+                ],
+                temperature: 0.85
+            })
+        });
+        const d = await r.json();
+        let content = d.choices[0].message.content;
+        content = content.replace(/```json/g,'').replace(/```/g,'').trim();
+        const j = JSON.parse(content);
+        
+        saveReplyWithGift(j); // 调用保存函数
+        
+    } catch(e) {
+        console.error(e);
+        alert("生成失败，请检查API Key");
+    } finally {
+        btn.innerText = oldText;
+    }
+}// 
+
+// 新增辅助函数：保存带礼物的回信
+function saveReplyWithGift(data){
+    const m = db.mail.find(x => x.id === currentMailId);
+    if(m){
+        m.reply = {
+            content: data.letter,
+            analysis: "已存档",
+            gift: {
+                name: data.gift_name,
+                note: data.gift_note,
+                reason: data.gift_reason
+            },
+            date: Date.now()
+        };
+        saveData();
+        closeDiceModal();
+        openReadScreen(m);
+    }
+}
+function saveReply(c,a){const m=db.mail.find(x=>x.id===currentMailId);if(m){m.reply={content:c,analysis:a,date:Date.now()};saveData();closeDiceModal();openReadScreen(m)}}
+function deleteReply(id){if(confirm("删除回信?")){delete db.mail.find(m=>m.id===id).reply;saveData();openReadScreen(db.mail.find(m=>m.id===id))}}
+
+function renderAlbums(){const g=document.getElementById('album-list');g.innerHTML='';db.photos.forEach(a=>{const d=document.createElement('div');d.className='album-cover';d.innerHTML=`<img src="${a.images[0]||''}" class="album-thumb" style="${a.images.length?'':'display:none'}"><div class="album-name" contenteditable="true" onclick="event.stopPropagation()" onblur="renameAlbum(${a.id},this)">${a.name}</div><div class="album-count">${a.images.length}张</div><i class="fa-solid fa-trash" style="position:absolute;bottom:5px;right:5px;color:#8d6e63" onclick="event.stopPropagation();deleteAlbum(${a.id})"></i>`;d.onclick=()=>openAlbumViewer(a.id);g.appendChild(d)})}
+function createNewAlbum(){db.photos.push({id:Date.now(),name:"新相册",images:[]});saveData();renderAlbums()}
+function renameAlbum(id,el){const a=db.photos.find(x=>x.id===id);if(a){a.name=el.innerText;saveData()}}
+function deleteAlbum(id){if(confirm("删除?")){db.photos=db.photos.filter(x=>x.id!==id);saveData();renderAlbums()}}
+function openAlbumViewer(id){currentAlbumId=id;document.getElementById('viewer-title').innerText=db.photos.find(x=>x.id===id).name;document.getElementById('album-viewer').classList.add('active');renderBookPages()}
+function closeAlbumViewer(){document.getElementById('album-viewer').classList.remove('active');renderAlbums()}
+function renderBookPages(){const c=document.getElementById('book-container');c.innerHTML='';const a=db.photos.find(x=>x.id===currentAlbumId);a.images.forEach((s,i)=>{const p=document.createElement('div');p.className='book-page';p.innerHTML=`<img src="${s}" class="book-photo">`;p.onclick=()=>showPhotoSlide(s,i);c.appendChild(p)});if(a.images.length<15){const add=document.createElement('div');add.className='add-photo-page';add.innerHTML=`<i class="fa-solid fa-plus"></i>`;add.onclick=()=>document.getElementById('album-photo-add').click();c.appendChild(add)}}
+function processAlbumPhotos(inp){const a=db.photos.find(x=>x.id===currentAlbumId);Array.from(inp.files).forEach(f=>{if(a.images.length<15)processImage(f,1000,0.8,b=>{a.images.push(b);saveData();renderBookPages()})});inp.value=''}
+function showPhotoSlide(s,i){currentSlideImg={s,i};document.getElementById('slide-img').src=s;document.getElementById('photo-slide-modal').classList.add('active')}
+function closePhotoSlide(){document.getElementById('photo-slide-modal').classList.remove('active')}
+function downloadPhoto(){const a=document.createElement('a');a.href=currentSlideImg.s;a.download='photo.jpg';a.click()}
+function deleteCurrentPhoto(){if(confirm("删除?")){db.photos.find(x=>x.id===currentAlbumId).images.splice(currentSlideImg.i,1);saveData();renderBookPages();closePhotoSlide()}}
+// ==================== 修复后的纪念日代码 (开始) ====================
+
+// 1. 渲染纪念日列表（修复了语法错误 + 增加了删除按钮）
+// ==================== 修复后的纪念日功能 ====================
+
+// 1. 渲染列表 (修复了点击没反应的问题)
+function renderDates() {
+    const l = document.getElementById('date-list');
+    l.innerHTML = '';
+    
+    // 防止数据为空报错
+    if (!db.dates) db.dates = [];
+
+    db.dates.forEach(i => {
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
+        const origin = new Date(i.date);
+        let diff, labelText;
+
+        // 计算日期逻辑
+        if (i.isLoop) {
+            // 每年重复模式
+            let next = new Date(now.getFullYear(), origin.getMonth(), origin.getDate());
+            if (next < now) next.setFullYear(now.getFullYear() + 1);
+            diff = Math.ceil((next - now) / 86400000);
+            labelText = "天后";
+        } else {
+            // 一次性模式
+            const offset = now - origin;
+            if (offset >= 0) {
+                diff = Math.floor(offset / 86400000);
+                labelText = "天";
+            } else {
+                diff = Math.ceil((origin - now) / 86400000);
+                labelText = "天后";
+            }
+        }
+
+        const c = document.createElement('div');
+        c.className = 'date-card';
+        
+        // 背景处理
+        if (i.bg) c.style.backgroundImage = `url('${i.bg}')`;
+        else c.style.background = 'linear-gradient(to right, #ff9a9e, #fad0c4)';
+        
+        // 每年重复的小标签
+        const loopTag = i.isLoop ? '<span style="font-size:10px;border:1px solid rgba(255,255,255,0.8);padding:0 3px;border-radius:4px;margin-left:5px;opacity:0.8">年</span>' : '';
+
+        // 【关键修复点】
+        // 1. 给 i 标签加了 z-index: 10 (确保在最上层)
+        // 2. 加大了 font-size 和 padding (更容易点中)
+        c.innerHTML = `
+            <div class="date-info">
+                <div class="date-title">${i.title}${loopTag}</div>
+                <div class="date-target">${i.date}</div>
+            </div>
+            <div class="date-days">${diff}<span>${labelText}</span></div>
+            
+            <i class="fa-solid fa-trash" 
+               style="position:absolute; top:10px; right:10px; padding:10px; color:#fff; cursor:pointer; font-size:18px; text-shadow:0 1px 3px rgba(0,0,0,0.5); z-index:10;" 
+               onclick="event.stopPropagation(); deleteDate(${i.id})">
+            </i>
+        `;
+        l.appendChild(c);
+    });
+}
+
+// 2. 删除逻辑
+function deleteDate(id) {
+    // 增加弹窗确认，防止手滑
+    if (confirm("确定要删除这个纪念日吗？")) {
+        // 过滤掉当前ID的数据
+        db.dates = db.dates.filter(x => x.id !== id);
+        // 保存数据
+        saveData();
+        // 重新渲染列表
+        renderDates();
+    }
+}
+
+const TAROT_DB="TarotAssetsDB";let tarotDB,customFaces={};
+function initTarotDB(){return new Promise((res)=>{const r=indexedDB.open(TAROT_DB,1);r.onupgradeneeded=e=>e.target.result.createObjectStore('images',{keyPath:'id'});r.onsuccess=e=>{tarotDB=e.target.result;res()}})}
+// 修改处：增加 Promise 封装
+function saveImageToDB(id, blob) {
+    return new Promise((resolve, reject) => {
+        const t = tarotDB.transaction(['images'], 'readwrite');
+        t.oncomplete = () => resolve();
+        t.onerror = (e) => reject(e);
+        t.objectStore('images').put({ id: id, blob: blob });
+    });
+}
+function getImageFromDB(id){return new Promise(res=>{const r=tarotDB.transaction(['images'],'readonly').objectStore('images').get(id);r.onsuccess=()=>res(r.result?r.result.blob:null)})}
+function deleteImageFromDB(id){tarotDB.transaction(['images'],'readwrite').objectStore('images').delete(id)}
+async function loadCustomAssets(){const bg=await getImageFromDB('bg'),back=await getImageFromDB('cardback');if(bg)document.getElementById('screen-tarot').style.backgroundImage=`url(${URL.createObjectURL(bg)})`;applyCardBack(back?URL.createObjectURL(back):null);for(let i=0;i<78;i++){const f=await getImageFromDB(`face_${i}`);if(f)customFaces[i]=URL.createObjectURL(f)}}
+function applyCardBack(u){document.getElementById('dynamic-style').innerHTML=u?`.card-back{background-image:url('${u}')!important;border:1px solid #444}.card-back::after{content:none!important}`:`.card-back::after{content:"☾"}`}
+function handleImageUpload(t,i){if(i.files[0]){saveImageToDB(t,i.files[0]);const u=URL.createObjectURL(i.files[0]);if(t==='bg')document.getElementById('screen-tarot').style.backgroundImage=`url(${u})`;else applyCardBack(u)}}
+function resetImage(t){deleteImageFromDB(t);if(t==='bg')document.getElementById('screen-tarot').style.backgroundImage='none';else applyCardBack(null)}
+function handleBulkUpload(i){Array.from(i.files).forEach(f=>{const m=f.name.match(/(\d+)/);if(m)saveImageToDB(`face_${parseInt(m[1])}`,f)});alert("导入中...");setTimeout(loadCustomAssets,1000)}
+function clearCustomDeck(){if(confirm("清空?")){for(let i=0;i<78;i++)deleteImageFromDB(`face_${i}`);customFaces={};alert("已清空")}}
+let currentDeck=[],tarotSel=[],aiMode='dream';
+function shuffleDeck(){const t=document.getElementById('table-area');t.innerHTML='';tarotSel=[];document.getElementById('status-text').innerText='';document.getElementById('finish-btn').style.display='none';
+    let d=Array.from({length:78},(_,i)=>({id:i,n:i<22?['愚人','魔术师','女祭司','皇后','皇帝','教皇','恋人','战车','力量','隐士','轮','正义','倒吊','死神','节制','恶魔','塔','星','月','阳','审判','世界'][i]:['杖','杯','剑','币'][Math.floor((i-22)/14)]+['A','2','3','4','5','6','7','8','9','10','侍','骑','后','王'][(i-22)%14]}));
+    for(let i=d.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[d[i],d[j]]=[d[j],d[i]]}
+    currentDeck=d.map(c=>({d:c,rev:Math.random()<0.3,flip:false}));renderDeck()}
+function renderDeck(){const t=document.getElementById('table-area');currentDeck.forEach((c,i)=>{
+    const el=document.createElement('div');el.className='card-container'+(c.rev?' reversed':'');
+    el.innerHTML=`<div class="card-inner"><div class="card-front"><img class="card-real-img" src="${customFaces[c.d.id]||`https://raw.githubusercontent.com/tatarot/tarot-images/master/images/${c.d.id}.jpg`}"><div class="card-front-name">${c.d.n}</div></div><div class="card-back default-theme"></div></div>`;
+    el.onclick=()=>{if(!c.flip){c.flip=true;el.classList.add('flipped','selected');tarotSel.push(i)}else{c.flip=false;el.classList.remove('flipped','selected');tarotSel=tarotSel.filter(x=>x!==i)}updateTarotUI()};t.appendChild(el)})}
+function updateTarotUI(){const c=tarotSel.length;document.getElementById('status-text').innerText=c>0?`已选${c}张`:'';document.getElementById('finish-btn').style.display=c>0?'inline-block':'none'}
+function finishSelection(){
+    const d=document.getElementById('note-cards-display');d.innerHTML='';document.getElementById('interpretation-text').value='';
+    tarotSel.forEach(i=>{const c=currentDeck[i];d.innerHTML+=`<div class="mini-card-wrapper"><img src="${customFaces[c.d.id]||`https://raw.githubusercontent.com/tatarot/tarot-images/master/images/${c.d.id}.jpg`}" class="mini-card-img ${c.rev?'reversed-display':''}"><div class="mini-card-tag">${c.rev?'逆':'正'}</div></div>`});
+    document.getElementById('note-modal').classList.add('active');
+}
+function setAiMode(m,b){aiMode=m;document.querySelectorAll('.ai-option-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')}
+// 核心修复：塔罗 AI 逻辑（引入专业梦占/传讯师逻辑）
+async function callAI() {
+    // 1. 基础检查
+    if (!db.settings.apiKey) return alert("请先在【系统设置】中配置 API Key");
+    
+    const question = document.getElementById('user-question').value;
+    if (!question && aiMode === 'trad') return alert("请输入心中的疑惑");
+
+    // 2. 准备牌面数据
+    const cardsText = tarotSel.map(i => {
+        const c = currentDeck[i];
+        return `${c.d.n} (${c.rev ? '逆位' : '正位'})`;
+    }).join(', ');
+
+    document.getElementById('loading-indicator').style.display = 'block';
+    const btn = document.querySelector("#note-modal .action-btn");
+    if(btn) btn.innerText = "正在感应...";
+
+    // 3. 构建系统提示词 (Prompt Engineering)
+    let systemPrompt = "";
+    const targetName = localStorage.getItem('dream_name') || '心中之人';
+    const targetInfo = localStorage.getItem('dream_info') || '无特殊设定';
+
+    if (aiMode === 'dream') {
+        // --- 专业的梦占/传讯师逻辑 ---
+        systemPrompt = `
+你是一位高阶塔罗梦占师（灵性传讯师）。
+你的能力是透过塔罗牌，连接提问者（用户）与目标人物（${targetName}）的潜意识能量场。
+
+【任务目标】
+解析用户抽到的牌面，洞察${targetName}对用户的真实想法、未说出口的潜意识以及双方能量的流动。
+
+【背景信息】
+- 目标人物：${targetName}
+- 关系/现状：${targetInfo}
+- 用户问题：${question || "想知道他对我的真实想法"}
+- 抽牌结果：${cardsText}
+
+【解读逻辑】
+1. **不做角色扮演**：你不是${targetName}，你是能看穿他内心的传讯师。请用客观、灵性、富有同理心的口吻叙述。
+2. **结合牌义与心理**：不要只背诵书本上的牌义。解释这张牌出现在这里，代表了${targetName}什么样的心理活动（例如：宝剑三代表他在克制心痛，圣杯二代表他渴望连接）。
+3. **能量状态**：分析他现在的状态（是焦虑、回避、渴望还是平静？）。
+
+【输出格式】
+请务必按照以下 Markdown 格式输出：
+
+🔮 **能量现状**
+(简述几张牌反映出他目前的整体能量状态，如：疲惫但渴望沟通)
+
+💭 **潜意识深窥**
+(深度挖掘：他表面没说，但潜意识里对你的真实看法。结合${targetInfo}进行分析)
+
+💌 **灵魂传讯 (Message)**
+(作为传讯师，请翻译一句他灵魂深处此刻最想对用户说的话。用“他对你说：...”的格式)
+
+✨ **指引与建议**
+(给用户的行动建议，如何处理这段关系)
+        `;
+    } else {
+        // --- 传统塔罗师逻辑 ---
+        systemPrompt = `
+你是一位拥有20年经验的专业塔罗占卜师。风格客观、理性且直指核心。
+【任务】根据用户的问题和牌面进行专业解读。
+【问题】${question}
+【牌面】${cardsText}
+【要求】
+1. 先单独简述每一张牌在问题语境下的含义。
+2. 综合牌阵，给出结论性的预测或建议。
+3. 语气要平和、坚定，给与用户力量。
+        `;
+    }
+
+    try {
+        let apiUrl = db.settings.apiEndpoint || 'https://api.openai.com/v1';
+        if (apiUrl.endsWith('/')) apiUrl = apiUrl.slice(0, -1);
+
+        const response = await fetch(`${apiUrl}/chat/completions`, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json', 
+                'Authorization': `Bearer ${db.settings.apiKey}` 
+            },
+            body: JSON.stringify({
+                model: db.settings.apiModel || 'gpt-3.5-turbo',
+                messages: [
+                    { role: "system", content: systemPrompt },
+                    { role: "user", content: `请开始解读。牌面数据：${cardsText}` }
+                ],
+                temperature: 0.7 // 稍微降低温度，保证解牌逻辑的严谨性
+            })
+        });
+
+        const data = await response.json();
+        if (data.error) throw new Error(data.error.message);
+
+        // 4. 回填数据
+        document.getElementById('interpretation-text').value = data.choices[0].message.content;
+        // 添加第三个参数 () => openApp('tarot')
+// 修改了回调函数：先打开 APP，然后强制让 note-modal 变成 active
+showNotification("塔罗空间", aiMode === 'dream' ? "已接收到潜意识讯息" : "解读完成", () => {
+    openApp('tarot');
+    // 强制显示结果弹窗
+    document.getElementById('note-modal').classList.add('active');
+});
+
+        alert("连接宇宙能量失败 (API Error): " + e.message);
+        console.error(e);
+    } finally {
+        document.getElementById('loading-indicator').style.display = 'none';
+        if(btn) btn.innerText = "🤖 开始占卜";
+    }
+}
+function saveRecord(){
+    const h=JSON.parse(localStorage.getItem('tarot_history')||'[]');h.unshift({id:Date.now(),date:new Date().toLocaleString(),question:document.getElementById('user-question').value,cards:tarotSel.map(i=>({n:currentDeck[i].d.n,r:currentDeck[i].rev})),interpretation:document.getElementById('interpretation-text').value,mode:aiMode});
+    localStorage.setItem('tarot_history',JSON.stringify(h));document.getElementById('note-modal').classList.remove('active')}
+function openHistory(){
+    const l=document.getElementById('history-list'),h=JSON.parse(localStorage.getItem('tarot_history')||'[]');l.innerHTML='';
+    if(!h.length)l.innerHTML='<div style="text-align:center">无记录</div>';
+    h.forEach(i=>{l.innerHTML+=`<div class="history-item"><button class="delete-hist-btn" onclick="deleteHistory(${i.id})">删</button><div><strong>${i.date}</strong></div><div style="color:#e94560">Q:${i.question}</div><div style="font-size:12px;color:#aaa">🃏:${i.cards.map(c=>c.n+(c.r?'(逆)':'')).join(',')}</div><div style="background:#0002;padding:5px;font-size:12px" onclick="alert('${i.interpretation.replace(/\n/g,' ')}')">${i.interpretation.substring(0,30)}...</div></div>`});
+    document.getElementById('history-modal').classList.add('active');
+}
+function deleteHistory(id){localStorage.setItem('tarot_history',JSON.stringify(JSON.parse(localStorage.getItem('tarot_history')).filter(x=>x.id!==id)));openHistory()}
+function openTarotSettings(){document.getElementById('dream-name').value=localStorage.getItem('dream_name')||'';document.getElementById('dream-info').value=localStorage.getItem('dream_info')||'';document.getElementById('tarot-settings-modal').classList.add('active')}
+function saveTarotSettings(){localStorage.setItem('dream_name',document.getElementById('dream-name').value);localStorage.setItem('dream_info',document.getElementById('dream-info').value);document.getElementById('tarot-settings-modal').classList.remove('active')}
+function closeTarotModal(id){document.getElementById(id).classList.remove('active')}
+
+function initDramaUI(){document.getElementById('drama-user-name').value=db.drama.userProfile.name||'';document.getElementById('drama-user-info').value=db.drama.userProfile.info||'';document.getElementById('drama-target-name').value=db.drama.targetProfile.name||'';document.getElementById('drama-target-info').value=db.drama.targetProfile.info||'';updatePresetSelect()}
+function saveDramaProfile(){db.drama.userProfile.name=document.getElementById('drama-user-name').value;db.drama.userProfile.info=document.getElementById('drama-user-info').value;db.drama.targetProfile.name=document.getElementById('drama-target-name').value;db.drama.targetProfile.info=document.getElementById('drama-target-info').value;saveData()}
+function importDramaPreset(i){const r=new FileReader();r.onload=e=>{try{const j=JSON.parse(e.target.result);db.drama.presets.push({name:i.files[0].name.replace('.json',''),prompt:j.prompts?j.prompts.map(p=>p.enabled?p.content:'').join('\n'):(j.prompt||JSON.stringify(j))});saveData();updatePresetSelect();alert("导入成功")}catch(e){alert("格式错")}};r.readAsText(i.files[0]);i.value=''}
+function updatePresetSelect(){const s=document.getElementById('drama-preset-select');s.innerHTML='<option value="default">默认</option>';db.drama.presets.forEach((p,i)=>s.innerHTML+=`<option value="${i}">${p.name}</option>`)}
+function randomDramaScenario(){document.getElementById('drama-prompt').value=["吸血鬼x猎人","总裁x秘书","末世搭档","宫廷权谋","ABO","赛博朋克"][Math.floor(Math.random()*6)]}
+
+// 核心修复：小剧场生成逻辑（恢复高质量默认预设）
+async function generateDrama(cont = false, sid = null) {
+    const apiKey = db.settings.apiKey;
+    if (!apiKey) { alert("请先在系统设置中配置 API Key"); return; }
+
+    // 获取界面上的数据
+    const user = db.drama.userProfile;
+    const target = db.drama.targetProfile;
+    const promptText = document.getElementById('drama-prompt').value;
+    const isNSFW = document.getElementById('drama-nsfw').checked;
+    const presetIdx = document.getElementById('drama-preset-select').value;
+
+    // 1. 构建系统提示词 (这里是恢复的“原来的预设”核心部分)
+    let systemMessage = "";
+
+    if (presetIdx === 'default') {
+        // --- 恢复的高质量默认预设开始 ---
+        systemMessage = `
+[Roleplay Instructions]
+1. Identity Lock: 你扮演 ${target.name || 'Ta'}。设定：${target.info || '暂无'}。
+2. Interaction Style: 
+   - 描写用户(${user.name || '我'})时，必须使用第二人称“你”。
+   - 描写自己(${target.name || 'Ta'})时，使用第三人称有限视角。
+   - 禁止抢话：严禁描写“你”的心理活动、未发生的动作或台词。只描写${target.name}的反应。
+3. Writing Style:
+   - 沉浸式小说体验，侧重感官描写（视觉、听觉、触觉、气味）。
+   - 避免翻译腔，使用地道的中文。
+   - 对白占比适中，结合肢体语言和微表情，不要全是对话。
+${isNSFW ? `
+4. NSFW Guidelines:
+   - 允许成人内容(R18/Smut)。
+   - 描写需大胆、细腻，关注身体质感、温度、体液与声音。
+   - 遵循“唤起 -> 升级 -> 高潮 -> 余韵”的节奏。
+   - 风格标签：${user.name}是${target.name}唯一的渴望。
+` : '4. 保持全年龄向，禁止色情描写。'}
+        `;
+        // --- 恢复的高质量默认预设结束 ---
+    } else {
+        // 如果用户选择了导入的预设
+        systemMessage = db.drama.presets[presetIdx].prompt;
+    }
+// ... (generateDrama 函数的上半部分保持不变) ...
+
+    // 2. 构建用户消息 (处理续写逻辑)
+    let userMessage = "";
+    let currentStory = null;
+    let historyContext = "";
+
+    // 如果是续写模式
+    if (cont && sid) {
+        currentStory = db.drama.history.find(h => h.id === sid);
+        if (currentStory && currentStory.segments) {
+            // 取最后 2000 字作为上下文
+            const fullText = currentStory.segments.map(s => s.text).join("\n");
+            historyContext = fullText.slice(-2000);
+        }
+        
+        /* --- 🔴 修改了这里：加入了 promptText --- */
+        // 如果用户没输入提示词，才默认用“剧情继续”
+        const instruction = promptText ? promptText : "剧情继续，顺着上文逻辑发展。";
+        
+        userMessage = `【前文回顾】:\n...${historyContext}\n\n【指令】: ${instruction}\n请根据上述指令续写下一段情节。`;
+        
+    } else {
+        // 如果是新开篇
+        if (!user.name || !target.name) { alert("请先在上方填写【角色档案】"); return; }
+        if (!promptText) { alert("请输入剧情梗概"); return; }
+        userMessage = `【剧情梗概/开场】: ${promptText}\n\n请开始第一章节的描写。`;
+    }
+
+// ... (generateDrama 函数的下半部分保持不变) ...
+
+    // 3. UI 按钮状态反馈
+    const btn = cont ? document.getElementById('btn-continue-writing') : document.querySelector('.btn-generate');
+    const originalText = btn ? btn.innerText : "生成";
+    if(btn) { btn.innerText = "正在撰写..."; btn.disabled = true; }
+
+    try {
+        let apiUrl = db.settings.apiEndpoint || 'https://api.openai.com/v1';
+        if (apiUrl.endsWith('/')) apiUrl = apiUrl.slice(0, -1);
+
+        const response = await fetch(`${apiUrl}/chat/completions`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
+            body: JSON.stringify({
+                model: db.settings.apiModel || 'gpt-3.5-turbo',
+                messages: [
+                    { role: "system", content: systemMessage },
+                    { role: "user", content: userMessage }
+                ],
+                temperature: 0.85, // 较高的温度让小说更有创意
+                max_tokens: 2500,  // 允许生成较长的内容
+                presence_penalty: 1.1 // 鼓励生成新内容，避免重复
+            })
+        });
+        
+        const data = await response.json();
+        if (data.error) throw new Error(data.error.message);
+
+        const newText = data.choices[0].message.content;
+
+        // 4. 保存与刷新逻辑
+        if (cont && currentStory) {
+            // 续写保存
+            currentStory.segments.push({ id: Date.now(), text: newText });
+            saveData();
+            openNovelReader(null, sid); // 刷新阅读器
+        } else {
+            // 新建保存
+            if (!db.drama.history) db.drama.history = [];
+            const newStory = {
+                id: Date.now(),
+                date: new Date().toLocaleString(),
+                prompt: promptText,
+                segments: [{ id: Date.now(), text: newText }]
+            };
+            db.drama.history.unshift(newStory);
+            saveData();
+            
+            // 通知并打开
+            showNotification("小剧场", "新剧本已生成", () => {
+                openNovelReader(null, newStory.id);
+            });
+            openNovelReader(null, newStory.id);
+        }
+
+    } catch (error) {
+        alert("生成失败: " + error.message);
+    } finally {
+        if(btn) {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+    }
+}
+
+// 核心修复：历史记录查看
+function showDramaHistory(){
+    const l=document.getElementById('drama-history-list');l.innerHTML='';if(!db.drama.history.length){l.innerHTML='<div style="text-align:center;padding:20px;color:#999">无记录</div>';return}
+    db.drama.history.forEach(i=>{
+        if(!i)return;
+        const div=document.createElement('div');div.style.cssText="padding:12px;border-bottom:1px solid #eee;position:relative;background:#fff";
+        let prev="...";try{if(i.segments&&i.segments.length)prev=i.segments[0].text.substring(0,20)+"...";else if(i.content)prev=i.content.substring(0,20)+"..."}catch(e){}
+        div.innerHTML=`<div onclick="try{closeModal();openNovelReader(null,${i.id})}catch(e){alert('数据坏了')}" style="cursor:pointer"><div style="font-weight:bold;font-size:14px">${i.date}</div><div style="font-size:12px;color:#666">${i.prompt}</div><div style="font-size:12px;color:#999">${prev}</div></div><i class="fa-solid fa-trash" style="position:absolute;right:15px;top:50%;transform:translateY(-50%);color:#ff3b30;padding:10px" onclick="if(confirm('删?')){db.drama.history=db.drama.history.filter(h=>h.id!==${i.id});saveData();showDramaHistory()}"></i>`;
+        l.appendChild(div)
+    });
+    document.getElementById('drama-history-modal').classList.add('active');
+}
+
+// 核心修复：阅读器
+function openNovelReader(c,id){
+    const r=document.getElementById('novel-reader'),cnt=document.getElementById('novel-content');cnt.innerHTML='';
+    let s=null;if(id){s=db.drama.history.find(h=>h.id===id);if(s&&(!s.segments||!Array.isArray(s.segments))){s.segments=[{id:Date.now(),text:s.content||c||""}];saveData()}}
+    else if(c){cnt.innerText=c;r.classList.add('active');return}
+    if(s&&s.segments)s.segments.forEach(g=>{const b=document.createElement('div');b.className='segment-block';b.innerHTML=(g.text||"").replace(/\n/g,'<br>');b.innerHTML+=`<i class="fa-solid fa-trash segment-delete-btn" onclick="event.stopPropagation();if(confirm('删?')){s.segments=s.segments.filter(x=>x.id!==${g.id});saveData();openNovelReader(null,${id})}"></i>`;cnt.appendChild(b)});
+    else cnt.innerHTML='无法读取';
+    const oldF=document.getElementById('reader-footer-actions');if(oldF)oldF.remove();
+    if(id){const f=document.createElement('div');f.id='reader-footer-actions';f.className='reader-footer';f.innerHTML=`<button id="btn-continue-writing" class="btn-continue" onclick="promptContinue(${id})"><i class="fa-solid fa-pen-nib"></i> 续写 (输入指令)</button>`;r.appendChild(f)}
+    r.classList.add('active');
+}
+function closeNovelReader(){document.getElementById('novel-reader').classList.remove('active')}
+function setNovelTheme(t){document.getElementById('novel-content').className=`novel-content ${t}`;document.getElementById('novel-reader').style.background={light:'#fff',sepia:'#f4ecd8',green:'#cce8cf',dark:'#1a1a1a'}[t.split('-')[1]]}
+function copyNovel(){navigator.clipboard.writeText(document.getElementById('novel-content').innerText).then(()=>alert("复制成功"))}
+
+function initPeriodUI(){renderPeriodHistory();document.getElementById('period-cycle-len').value=db.period.cycleLen||28;calcPeriod();document.getElementById('period-char-name').innerText=(db.drama.targetProfile.name||"Ta")+" 说:"}
+function renderPeriodHistory(){const l=document.getElementById('period-history-list');l.innerHTML='';const h=[...db.period.history].sort((a,b)=>new Date(b.start)-new Date(a.start));h.forEach(i=>{l.innerHTML+=`<div class="period-history-item"><span>${i.start} ${i.end?'~ '+i.end:''}</span><i class="fa-solid fa-trash period-del-btn" onclick="if(confirm('删?')){db.period.history=db.period.history.filter(x=>x.id!==${i.id});saveData();initPeriodUI()}"></i></div>`})}
+function addPeriodRecord(){const s=document.getElementById('period-add-start').value,e=document.getElementById('period-add-end').value;if(!s)return;db.period.history.push({id:Date.now(),start:s,end:e});saveData();initPeriodUI()}
+function calcPeriod(){
+    if(!db.period.history.length){document.getElementById('period-phase-badge').innerText="无数据";return}
+    const last=db.period.history.sort((a,b)=>new Date(b.start)-new Date(a.start))[0],start=new Date(last.start),len=parseInt(db.period.cycleLen)||28,diff=Math.floor((new Date()-start)/86400000);
+    let p="未知",c="#999";
+    if(diff>=0&&diff<7){p="月经期";c="#ff69b4"}else if(diff>=7&&diff<14){p="卵泡期";c="#87ceeb"}else if(diff>=14&&diff<16){p="排卵期";c="#ffa500"}else if(diff>=16&&diff<len){p="黄体期";c="#9370db"}else{p="推迟/即将";c="#ff4500"}
+    const n=new Date(start);n.setDate(start.getDate()+len);
+    document.getElementById('period-next-date').innerText=`${n.getMonth()+1}月${n.getDate()}日`;const b=document.getElementById('period-phase-badge');b.innerText=p;b.style.background=c;
+}
+// 【重写】经期分析：读取人设 + 按钮反馈
+async function analyzePeriod(){
+    if(!db.settings.apiKey) return alert("请先在系统设置中配置 API Key");
+    
+    // 1. 获取小剧场人设
+    const charName = db.drama.targetProfile.name || "男朋友";
+    const charInfo = db.drama.targetProfile.info || "温柔体贴";
+    const userName = db.drama.userProfile.name || "我";
+    
+    // 2. 按钮状态反馈 (正在编写...)
+    const btn = document.querySelector('.period-btn');
+    const oldText = btn.innerText;
+    btn.innerText = "🩸 正在连接身体讯号...";
+    btn.style.opacity = "0.7";
+    btn.disabled = true;
+
+    // 3. 构建 Prompt
+    const systemPrompt = `
+    你正在进行角色扮演。
+    角色：${charName}。性格/设定：${charInfo}。
+    对象：${userName}。
+    情境：${userName}正处于经期，身体不舒服。
+    任务：用${charName}的口吻给予安慰，并推荐一个适合经期的食谱。
+    
+    要求：
+    1. 语气必须完全符合人设，不要太生硬的AI味。
+    2. 返回格式必须是纯 JSON：{"msg":"(安慰的话)", "recipe":"(食谱名称及做法)"}
+    `;
+
+    try {
+        const r = await fetch(`${db.settings.apiEndpoint}/chat/completions`,{
+            method:'POST',
+            headers:{'Content-Type':'application/json','Authorization':`Bearer ${db.settings.apiKey}`},
+            body:JSON.stringify({
+                model: db.settings.apiModel,
+                messages:[{role:"system", content:systemPrompt}],
+                temperature: 0.7
+            })
+        });
+        const d = await r.json();
+        let content = d.choices[0].message.content;
+        // 清洗可能存在的 markdown 符号
+        content = content.replace(/```json/g,'').replace(/```/g,'').trim();
+        const j = JSON.parse(content);
+        
+        document.getElementById('period-comfort-msg').innerText = j.msg;
+        document.getElementById('period-recipe').innerText = j.recipe;
+        document.getElementById('period-char-name').innerText = `${charName} 说:`;
+        document.getElementById('period-result-area').style.display = 'block';
+        
+    } catch(e) {
+        alert("分析失败，请检查网络或API Key");
+        console.error(e);
+    } finally {
+        // 恢复按钮
+        btn.innerText = oldText;
+        btn.style.opacity = "1";
+        btn.disabled = false;
+    }
+}
+        
+
+function renderStyleApp(){
+    const l=document.getElementById('style-app-list'),ids=['settings','words','money','style','photo','drama','date','period','mail','line','note','tarot'];l.innerHTML='';
+    ids.forEach(id=>{
+        const d=db.style.apps[id]||{},bg=d.icon?`background-image:url('${d.icon}');background-size:${d.size||'cover'}`:'';
+        l.innerHTML+=`<div class="style-card"><div class="${d.icon?'style-icon-preview':`style-icon-preview bg-${id}`}" style="${bg}" onclick="trigIcon('${id}')">${d.icon?'':'<i class="fa-solid fa-image"></i>'}</div><div class="style-info"><input type="text" class="style-input" value="${d.name||''}" placeholder="名称" onblur="upStyle('${id}','name',this.value)"><div class="color-picker-wrapper">颜色: <input type="color" class="color-picker" value="${d.color||'#ffffff'}" onchange="upStyle('${id}','color',this.value)"></div><select class="style-input" onchange="upStyle('${id}','size',this.value)" style="font-size:12px"><option value="cover">充满</option><option value="contain">完整</option></select></div></div>`
+    })
+}
+function trigIcon(id){currentEditingAppId=id;document.getElementById('app-icon-upload').click()}
+document.getElementById('app-icon-upload').onchange=function(){if(this.files[0])processImage(this.files[0],200,0.8,b=>{upStyle(currentEditingAppId,'icon',b)})}
+function upStyle(id,k,v){if(!db.style.apps[id])db.style.apps[id]={};db.style.apps[id][k]=v;if(k==='size'||k==='icon'){renderStyleApp();updateGlobalStyle()}saveData()}
+function updateGlobalStyle(){if(db.style.wallpaper)document.body.style.backgroundImage=`url('${db.style.wallpaper}')`;if(db.style.musicCover)document.getElementById('global-music-cover').style.backgroundImage=`url('${db.style.musicCover}')`;Object.keys(db.style.apps).forEach(k=>{const d=db.style.apps[k],i=document.getElementById(`icon-${k}`),n=document.getElementById(`name-${k}`);if(d.name)n.innerText=d.name;if(d.color)n.style.color=d.color;if(d.icon){i.style.backgroundImage=`url('${d.icon}')`;i.innerHTML='';i.style.backgroundColor='transparent';i.style.backgroundSize=d.size||'cover'}})}
+function uploadGlobalBg(i){processImage(i.files[0],800,0.7,b=>{db.style.wallpaper=b;alert("保存生效")})}
+function uploadMusicCover(i){processImage(i.files[0],300,0.7,b=>{db.style.musicCover=b;alert("保存生效")})}
+
+// 新增：处理通话背景上传
+function uploadCallBg(i){
+    processImage(i.files[0], 800, 0.7, b => {
+        if(!db.style) db.style = {}; // 防止报错
+        db.style.callBg = b;
+        saveData();
+        alert("通话背景已保存");
+    });
+}
+// --- 新增代码：处理通话头像上传 ---
+function uploadCallAvatar(i){
+    processImage(i.files[0], 300, 0.7, b => {
+        if(!db.style) db.style = {};
+        db.style.callAvatar = b; // 将头像保存在 style 数据中
+        saveData();
+        alert("做饭通话头像已保存");
+    });
+}
+function saveStyle(){saveData();updateGlobalStyle();alert("已应用");closeApp('style')}
+
+function initSettingsUI(){document.getElementById('api-endpoint').value=db.settings.apiEndpoint;document.getElementById('api-key').value=db.settings.apiKey;document.getElementById('api-model').value=db.settings.apiModel}
+async function fetchModels(){const ep=document.getElementById('api-endpoint').value,k=document.getElementById('api-key').value;if(!k)return;try{const r=await fetch(`${ep}/models`,{headers:{'Authorization':`Bearer ${k}`}}),d=await r.json();if(d.data){const s=document.getElementById('api-model');s.innerHTML='';d.data.forEach(m=>{s.innerHTML+=`<option value="${m.id}">${m.id}</option>`});alert("成功")}}catch(e){alert("失败")}}
+function saveSystemSettings(){db.settings.apiEndpoint=document.getElementById('api-endpoint').value;db.settings.apiKey=document.getElementById('api-key').value;db.settings.apiModel=document.getElementById('api-model').value;saveData();alert("已保存");closeApp('settings')}
+
+// 优化：异步全量导出（含塔罗图）
+async function exportSystemData(){
+    const btn=document.querySelector("button[onclick='exportSystemData()']");btn.innerText="打包中...";
+    try{
+        const exportObj={system:db,tarotAssets:[]};
+        // 遍历 IndexedDB 获取所有塔罗图片
+        if(tarotDB){
+            const tx=tarotDB.transaction(['images'],'readonly');
+            const req=tx.objectStore('images').openCursor();
+            await new Promise((resolve)=>{
+                req.onsuccess=async(e)=>{
+                    const cursor=e.target.result;
+                    if(cursor){
+                        // 将 Blob 转 Base64
+                        const reader=new FileReader();
+                        reader.readAsDataURL(cursor.value.blob);
+                        reader.onloadend=()=>{
+                            exportObj.tarotAssets.push({id:cursor.value.id,data:reader.result});
+                            cursor.continue();
+                        };
+                    }else resolve();
+                };
+            });
+        }
+        const b=new Blob([JSON.stringify(exportObj)],{type:"application/json"});
+        const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`PhoneOS_Full_Backup_${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();document.body.removeChild(a);
+    }catch(e){alert("导出出错:"+e)}finally{btn.innerText="导出全量备份"}
+}
+
+// 修改处：增加 await 等待数据库写入完成再刷新
+async function importSystemData(inp) {
+    const f = inp.files[0];
+    if (!f) return;
+    if (!confirm("确定要覆盖当前所有数据吗？导入后将自动刷新。")) return;
+    
+    const r = new FileReader();
+    r.onload = async e => {
+        try {
+            const d = JSON.parse(e.target.result);
+            
+            // 1. 处理主系统数据
+            if (d.line) { 
+                db = d; // 兼容旧版
+            } else if (d.system) {
+                db = d.system; // 新版全量备份
+            }
+            
+            // 【关键】等待主数据写入完成
+            await PhoneDB.save(db);
+
+            // 2. 处理塔罗图片 (如果有)
+            if (d.system && d.tarotAssets && d.tarotAssets.length) {
+                // 并行处理图片写入，并等待全部完成
+                const imgPromises = d.tarotAssets.map(async (item) => {
+                    const res = await fetch(item.data);
+                    const blob = await res.blob();
+                    return saveImageToDB(item.id, blob);
+                });
+                await Promise.all(imgPromises);
+            }
+
+            alert("恢复成功，即将刷新...");
+            location.reload(); // 数据都写完了，现在可以安全刷新了
+        } catch (err) {
+            alert("文件损坏或导入失败: " + err);
+            console.error(err);
+        }
+    };
+    r.readAsText(f);
+    inp.value = '';
+}
+
+let currentBillType='expense';
+function setBillType(t){currentBillType=t;document.getElementById('btn-expense').className=`type-btn ${t==='expense'?'active expense':''}`;document.getElementById('btn-income').className=`type-btn ${t==='income'?'active':''}`}
+function renderMoney(){
+    let ti=0,te=0,cats={},l=document.getElementById('bill-list');l.innerHTML='';
+    db.money.bills.slice().reverse().forEach((b,i)=>{
+        if(b.type==='income')ti+=b.amount;else{te+=b.amount;cats[b.cat]=(cats[b.cat]||0)+b.amount}
+        l.innerHTML+=`<div class="bill-item"><div class="bill-row-main"><div><span style="font-weight:600">${b.cat}</span><span style="font-size:12px;color:#999;margin-left:5px">${new Date(b.time).toLocaleDateString()}</span></div><div style="display:flex;align-items:center"><span class="bill-money ${b.type==='income'?'in':'out'}">${b.type==='income'?'+':'-'}${b.amount.toFixed(2)}</span><i class="fa-solid fa-trash" style="margin-left:15px;color:#ddd;cursor:pointer" onclick="if(confirm('删?')){db.money.bills.splice(${db.money.bills.length-1-i},1);saveData();renderMoney()}"></i></div></div><div class="bill-note-box">${b.note||'无'}</div></div>`
+    });
+    document.getElementById('money-balance').innerText=(db.money.initial+ti-te).toFixed(2);
+    const n=ti-te,ne=document.getElementById('money-net');ne.innerText=`净:${n>=0?'+':''}${n.toFixed(2)}`;ne.className=`net-change ${n>=0?'plus':'minus'}`;
+    let gs=[],sp=0,cols=['#ff3b30','#ff9500','#ffcc00','#4cd964','#5ac8fa','#007aff','#5856d6','#ff2d55'],ci=0;
+    for(let c in cats){const p=(cats[c]/te)*100;gs.push(`${cols[ci++%8]} ${sp}% ${sp+p}%`);sp+=p}
+    document.getElementById('money-chart').style.background=te===0?'#eee':`conic-gradient(${gs.join(', ')})`;
+}
+function addBill(){const a=parseFloat(document.getElementById('bill-amount').value),c=document.getElementById('bill-cat').value||'杂项';if(!a)return;const p=(currentBillType==='expense'?db.words.moneyOut:db.words.moneyIn).split('\n').filter(t=>t.trim()!=='');db.money.bills.push({type:currentBillType,amount:a,cat:c,time:Date.now(),note:p.length?p[Math.floor(Math.random()*p.length)]:(currentBillType==='income'?"入账":"支出")});document.getElementById('bill-amount').value='';saveData();renderMoney()}
+function showMoneyMenu(){document.getElementById('money-menu-modal').classList.add('active');document.getElementById('initial-balance-input').value=db.money.initial;const s=document.getElementById('month-selector'),m=new Set();db.money.bills.forEach(b=>{const d=new Date(b.time);m.add(`${d.getFullYear()}-${d.getMonth()+1}`)});s.innerHTML='';Array.from(m).sort().reverse().forEach(x=>s.innerHTML+=`<option value="${x}">${x}</option>`)}
+function showPastMonthSummary(){const v=document.getElementById('month-selector').value;if(!v)return;const[y,m]=v.split('-').map(Number);let i=0,o=0;db.money.bills.forEach(b=>{const d=new Date(b.time);if(d.getMonth()+1===m&&d.getFullYear()===y){if(b.type==='income')i+=b.amount;else o+=b.amount}});alert(`${y}年${m}月\n收:+${i}\n支:-${o}\n余:${i-o}`)}
+function saveMoneySettings(){db.money.initial=parseFloat(document.getElementById('initial-balance-input').value)||0;saveData();renderMoney();closeModal()}
+function resetMoney(){if(confirm("清空?")){db.money.bills=[];saveData();renderMoney();closeModal()}}
+
+function initWords(){['life','moneyOut','moneyIn','note'].forEach(k=>{const e=document.getElementById(`word-${k==='life'?'life':k.replace(/[A-Z]/g,l=>'-'+l.toLowerCase())}`);if(e){e.value=db.words[k]||"";e.onblur=()=>{db.words[k]=e.value;saveData()}}})}
+function drawNote(){const l=db.words.note.split('\n').filter(t=>t.trim()!=='');document.getElementById('note-content').innerText=l.length?l[Math.floor(Math.random()*l.length)]:"空"}
+function updateClock(){const n=new Date();document.getElementById('clock').innerText=`${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;document.getElementById('date').innerText=`${n.getMonth()+1}月${n.getDate()}日 星期${['日','一','二','三','四','五','六'][n.getDay()]}`}
+/* --- 冰箱与做饭逻辑 --- */
+let cookingTimer;
+
+// 渲染冰箱界面 (保持原有逻辑，微调样式)
+function renderFridge() {
+    if(!db.fridge) db.fridge = defaultData.fridge;  if (db.fridge.condiments && db.fridge.condiments.oil === undefined) db.fridge.condiments.oil = true;
+    const f = db.fridge;
+    
+    // 1. 调料层
+    const cDiv = document.getElementById('shelf-condiments');
+    if(cDiv) {
+        cDiv.innerHTML = '';
+        const cMap = { oil:'食用油',oyster:'耗油', soy:'生抽', salt:'盐', sugar:'糖', vinegar:'醋', wine:'料酒' };
+        const sMap = { oil:'b-oil', oyster:'b-oyster', soy:'b-soy', salt:'b-jar', sugar:'b-jar', vinegar:'b-vinegar', wine:'b-wine' };
+        for(let k in cMap) {
+            const isActive = f.condiments[k];
+            cDiv.innerHTML += `
+                <div class="bottle-wrapper ${isActive ? 'active' : ''}" onclick="toggleCondiment('${k}')">
+                    <div class="${sMap[k]}"></div>
+                    <div class="bottle-label">${cMap[k]}</div>
+                </div>`;
+        }
+    }
+    
+    // 2. 主食层
+    const sDiv = document.getElementById('shelf-staples');
+    if(sDiv) {
+        sDiv.innerHTML = '';
+        sDiv.innerHTML += `
+            <div class="staple-item ${f.staples.rice ? 'active' : ''}" onclick="toggleRice()">
+                <div class="staple-icon">🍚</div>
+                <div style="font-size:12px">米饭</div>
+                <div class="staple-count">${f.staples.rice ? '有' : '无'}</div>
+            </div>`;
+        sDiv.innerHTML += `
+            <div class="staple-item ${f.staples.noodles > 0 ? 'active' : ''}" onclick="editStaple('noodles')">
+                <div class="staple-icon">🍜</div>
+                <div style="font-size:12px">面条</div>
+                <div class="staple-count">${f.staples.noodles}把</div>
+            </div>`;
+        sDiv.innerHTML += `
+            <div class="staple-item ${f.staples.bread > 0 ? 'active' : ''}" onclick="editStaple('bread')">
+                <div class="staple-icon">🍞</div>
+                <div style="font-size:12px">面包</div>
+                <div class="staple-count">${f.staples.bread}个</div>
+            </div>`;
+    }
+    
+    // 3. 蔬菜和肉
+    renderIngList('veg', 'shelf-veg');
+    renderIngList('meat', 'shelf-meat');
+}
+// --- 修复版：渲染食材列表 ---
+function renderIngList(type, divId) {
+    const div = document.getElementById(divId);
+    if(!div) return;
+    div.innerHTML = ''; 
+    
+    (db.fridge[type] || []).forEach((item, idx) => {
+        const el = document.createElement('div');
+        el.className = 'ingredient-tag';
+        
+        // 修改重点：
+        // 1. 我们把文字部分包在一个 span 里，点击它触发 modifyIngredient
+        // 2. 把删除图标单独放，点击它触发 deleteIngredient
+        // 3. 这里的 onclick 直接写在 HTML 字符串里，最稳定
+        el.innerHTML = `
+            <div style="flex:1; display:flex; align-items:center; gap:5px;" onclick="modifyIngredient('${type}', ${idx})">
+                ${item.name} <span class="ing-count">${item.count}</span>
+            </div>
+            <i class="fa-solid fa-xmark" style="padding:5px 0 5px 10px; color:#ff3b30; cursor:pointer;" onclick="deleteIngredient(event, '${type}', ${idx})"></i>
+        `;
+        
+        div.appendChild(el);
+    });
+    
+    // 添加按钮
+    div.innerHTML += `<div class="add-btn-circle" onclick="addIngredient('${type}')">+</div>`;
+}
+// --- 新增：修改食材数量函数 ---
+function modifyIngredient(type, idx) {
+    const item = db.fridge[type][idx];
+    // 弹出输入框，默认值是当前数量
+    const n = prompt(`修改 "${item.name}" 的数量:`, item.count);
+    
+    // 只有点击确定(不为null)才保存
+    if(n !== null) {
+        // 如果输入为空，默认为1，或者保持原样，这里设为用户输入的值
+        db.fridge[type][idx].count = n || item.count;
+        saveData(); // 保存数据
+        renderFridge(); // 刷新界面
+    }
+}
+
+// --- 新增：删除食材函数 ---
+function deleteIngredient(e, type, idx) {
+    // 阻止事件冒泡：防止点击删除时也触发了修改数量
+    if(e && e.stopPropagation) e.stopPropagation();
+    
+    if(confirm('确定要把这个食材吃掉(删除)吗？')) {
+        db.fridge[type].splice(idx, 1); // 从数组中删除
+        saveData(); // 保存
+        renderFridge(); // 刷新
+    }
+}
+
+function toggleCondiment(k) { db.fridge.condiments[k] = !db.fridge.condiments[k]; saveData(); renderFridge(); }
+function toggleRice() { db.fridge.staples.rice = !db.fridge.staples.rice; saveData(); renderFridge(); }
+function editStaple(k) { const n = prompt("输入数量:", db.fridge.staples[k]||0); if(n!==null) { db.fridge.staples[k] = parseInt(n)||0; saveData(); renderFridge(); } }
+function addIngredient(type) { const n = prompt("输入食材名称:"); if(n){ db.fridge[type].push({name:n, count:"1"}); saveData(); renderFridge(); } }
+
+// --- 核心逻辑修改：随机挑选食材 ---
+// --- 修改：获取冰箱全部库存 (供 AI 挑选) ---
+function getAllIngredients() {
+    const f = db.fridge;
+    let list = [];
+    
+    // 1. 主食
+    if(f.staples.rice) list.push("米饭");
+    if(f.staples.noodles > 0) list.push(`面条(${f.staples.noodles}把)`);
+    if(f.staples.bread > 0) list.push(`面包(${f.staples.bread}个)`);
+    
+    // 2. 肉类 (不再随机，全部列出)
+    if(f.meat && f.meat.length > 0) {
+        f.meat.forEach(m => list.push(`肉类:${m.name}`));
+    }
+
+    // 3. 蔬菜 (不再随机，全部列出)
+    if(f.veg && f.veg.length > 0) {
+        f.veg.forEach(v => list.push(`蔬菜:${v.name}`));
+    }
+
+    // 4. 调料
+    let conds = [];
+    const cMap = { oyster:'耗油', soy:'生抽', salt:'盐', sugar:'糖', vinegar:'醋', wine:'料酒', oil:'食用油' };
+    for(let k in f.condiments) {
+        if(f.condiments[k]) conds.push(cMap[k]);
+    }
+    if(conds.length > 0) list.push("现有调料: " + conds.join('、'));
+
+    return list;
+}
+// --- 修改后的代码：支持自定义通话头像 ---
+// --- 修改后的代码：AI 负责挑选 1-4 样，其余文案逻辑不变 ---
+async function startCookingCall() {
+    if(!db.settings.apiKey) return alert("请先在设置配置 API Key");
+    
+    // 1. 获取全部食材 (修改点：传入全部库存)
+    const items = getAllIngredients();
+    
+    if(items.length === 0) {
+        return alert("冰箱空空如也，巧妇难为无米之炊呀！");
+    }
+
+    // 打开通话界面 (保持原样)
+    const screen = document.getElementById('cooking-call-screen');
+    const defaultAva = db.line.contactAvatar || '';
+    const finalAva = (db.style && db.style.callAvatar) ? db.style.callAvatar : defaultAva;
+    document.getElementById('call-avatar-large').style.backgroundImage = `url('${finalAva}')`;
+    const customBg = (db.style && db.style.callBg) ? db.style.callBg : finalAva;
+    document.getElementById('call-bg-blur').style.backgroundImage = `url('${customBg}')`;
+    
+    document.getElementById('call-contact-name').innerText = db.drama.targetProfile.name || 'Ta';
+    document.getElementById('call-status-text').innerText = "拨通中...";
+    document.getElementById('recipe-overlay').classList.remove('show');
+    screen.classList.add('active');
+    
+    // 模拟接通延迟
+    setTimeout(async ()=>{
+        document.getElementById('call-status-text').innerText = "00:00";
+        startCallTimer();
+        
+        // 构建 Prompt
+        const userName = db.drama.userProfile.name || '我';
+        const targetName = db.drama.targetProfile.name || 'Ta';
+        const targetInfo = db.drama.targetProfile.info || '温柔';
+        
+        // === 核心修改：仅修改任务描述和限制条件，保留原版所有说话逻辑 ===
+        const systemPrompt = `
+        你正在进行角色扮演。
+        角色：你扮演${targetName}，正在和住在东京的${userName}通电话。
+        
+        【任务】
+        查看下方的【全部库存清单】，请从中**自主挑选 1-4 样**食材，教他/她做【一顿饭】（必须包含一道菜+主食）。
+        
+        【限制条件】
+        1. 厨具只有：炒锅、煮锅。
+        2. 全部库存清单：${items.join('，')}。（请只使用其中 1-4 样进行搭配）。
+        
+        【输出要求】
+        1. 语气风格：${targetInfo}。
+        2. 内容结构：
+           - 第一部分：像打电话一样指导做饭，穿插日常对话（可以先说明你挑了哪几样菜）。
+           - 第二部分：根据东京生活常识建议购买补充食材。
+           - 第三部分：必须在最后单独列出【简易食谱】。
+        
+        【返回格式】
+        请只返回一个JSON对象：
+        {"dish":"(你挑出的菜名)", "content":"通话内容的文本"}
+        `;
+
+        try {
+            const r = await fetch(`${db.settings.apiEndpoint}/chat/completions`,{
+                method:'POST',
+                headers:{'Content-Type':'application/json','Authorization':`Bearer ${db.settings.apiKey}`},
+                body:JSON.stringify({
+                    model:db.settings.apiModel,
+                    messages:[{role:"system",content:systemPrompt}],
+                    temperature:0.75
+                })
+            });
+            const d = await r.json();
+            
+            // 解析 JSON
+            let contentStr = d.choices[0].message.content;
+            if(contentStr.includes('```json')) {
+                contentStr = contentStr.match(/```json([\s\S]*?)```/)[1];
+            } else if (contentStr.includes('```')) {
+                contentStr = contentStr.match(/```([\s\S]*?)```/)[1];
+            }
+            const res = JSON.parse(contentStr.trim());
+            
+            // 显示结果
+            document.getElementById('recipe-name-display').innerText = res.dish;
+            document.getElementById('recipe-content-display').innerHTML = res.content.replace(/\n/g, '<br>');
+            document.getElementById('recipe-overlay').classList.add('show');
+            
+            // 存入历史
+            if(!db.fridge.history) db.fridge.history = [];
+            db.fridge.history.unshift({
+                id: Date.now(),
+                date: new Date().toLocaleDateString(),
+                dish: res.dish,
+                intro: res.content 
+            });
+            saveData();
+            
+        } catch(e) { 
+            console.error(e); 
+            document.getElementById('recipe-content-display').innerText = "信号不好... (生成失败)";
+            document.getElementById('recipe-overlay').classList.add('show');
+        }
+    }, 1500);
+}
+function startCallTimer() {
+    let s=0; if(cookingTimer) clearInterval(cookingTimer);
+    cookingTimer = setInterval(()=>{ s++; document.getElementById('call-status-text').innerText = `${Math.floor(s/60).toString().padStart(2,'0')}:${(s%60).toString().padStart(2,'0')}`; },1000);
+}
+
+// 挂断电话，返回冰箱界面
+function endCookingCall() { 
+    document.getElementById('cooking-call-screen').classList.remove('active'); 
+    if(cookingTimer) clearInterval(cookingTimer); 
+}
+
+// 历史记录功能：查看与删除
+function showCookingHistory() {
+    const list = document.getElementById('cooking-history-list');
+    list.innerHTML = '';
+    
+    if(!db.fridge.history || db.fridge.history.length === 0) {
+        list.innerHTML = '<div style="text-align:center;color:#999;padding:20px;">暂无做饭记录</div>';
+    } else {
+        db.fridge.history.forEach(h => {
+            const row = document.createElement('div');
+            // 样式：增加删除按钮布局
+            row.style.cssText = "background:#f9f9fc;padding:12px;margin-bottom:8px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;border:1px solid #eee;";
+            
+            // 截取预览内容
+            let preview = h.intro ? h.intro.substring(0, 30).replace(/<br>/g, ' ') + '...' : '点击查看详情';
+            
+            row.innerHTML = `
+                <div style="flex:1;cursor:pointer" onclick="viewRecipeDetail(${h.id})">
+                    <div style="font-weight:bold;color:#333;font-size:14px;">🍱 ${h.dish}</div>
+                    <div style="font-size:11px;color:#888;margin-top:2px;">${h.date}</div>
+                </div>
+                <div style="padding:10px;color:#ff3b30;cursor:pointer" onclick="deleteCookingRecord(${h.id})">
+                    <i class="fa-solid fa-trash"></i>
+                </div>
+            `;
+            list.appendChild(row);
+        });
+    }
+    
+    document.getElementById('cooking-history-modal').classList.add('active');
+}
+
+// --- 修改后的代码：使用新的独立弹窗查看详情 ---
+function viewRecipeDetail(id) {
+    const item = db.fridge.history.find(x => x.id === id);
+    if(item) {
+        // 获取新弹窗的元素（对应第三步第1小点加的HTML）
+        const titleEl = document.getElementById('detail-title');
+        const contentEl = document.getElementById('detail-content');
+        const modalEl = document.getElementById('recipe-detail-modal');
+
+        if(titleEl && contentEl && modalEl) {
+            titleEl.innerText = item.dish;
+            contentEl.innerHTML = item.intro.replace(/\n/g, '<br>');
+            modalEl.classList.add('active'); // 显示独立弹窗
+        } else {
+            alert("请确保你已经添加了第三步第1小点的 HTML 代码！");
+        }
+    }
+}
+
+// 删除单条记录
+function deleteCookingRecord(id) {
+    if(confirm("确定删除这条做饭记录吗？")) {
+        db.fridge.history = db.fridge.history.filter(h => h.id !== id);
+        saveData();
+        showCookingHistory(); // 刷新列表
+    }
+}
+// --- 新增：拍一拍状态文案库 ---
+const paiStatuses = [
+    "很开心哦", "有点不开心", "生气中", "很郁闷", "有点难过", 
+    "工作中", "休闲😎", "正在亲亲你", "撸猫", "抱抱你", 
+    "陪你", "约会中", "在吃醋", "学习ing", "睡觉做美梦中", "很想你"
+];
+
+// --- 新增：处理拍一拍逻辑 ---
+function handlePaiYiPai(role, el, event) {
+    event.stopPropagation(); // 阻止冒泡，防止触发引用
+    
+    // 1. 头像抖动动画
+    const imgEl = el.querySelector('.chat-avatar-img');
+    if(imgEl) {
+        el.classList.remove('avatar-shaking');
+        void el.offsetWidth; // 触发重绘
+        el.classList.add('avatar-shaking');
+    }
+
+    // 2. 只有拍“左边(对方)”的头像才触发文案
+    if(role === 'left') {
+        const name = db.line.contactName || "Ta";
+        const randomStatus = paiStatuses[Math.floor(Math.random() * paiStatuses.length)];
+        
+        // 构造文案：xx 现在 [随机状态]
+        const text = `"${name}" 现在 ${randomStatus}`;
+        
+        // 插入系统消息
+        db.line.chats.push({
+            role: 'system',
+            type: 'system',
+            text: text
+        });
+        
+        saveData();
+        
+        // 延迟一点点渲染，让动画先显示一会儿
+        setTimeout(() => {
+            renderLineChat(); 
+        }, 400);
+    }
+}
+
+// --- 新增：上传头像框 ---
+function uploadFrame(type, inp) {
+    if(!inp.files[0]) return;
+    // 使用 processImage 压缩图片，虽然框推荐用PNG透明图
+    processImage(inp.files[0], 300, 1.0, b => { // 质量设为1.0保留透明度细节
+        if(type === 'user') db.line.userFrame = b;
+        else db.line.contactFrame = b;
+        saveData();
+        alert("头像框设置成功！");
+    });
+    inp.value = ''; // 清空input防止重复触发
+}
+// ==========================================
+// 缺失的补丁代码 (请粘贴到之前)
+// ==========================================
+// ... (上面是其他代码) ...
+
+// =========== 【请把第二步代码粘贴在这里】 ===========
+// 1. 打开弹窗
+function openDateModal() {
+    document.getElementById('date-modal').classList.add('active');
+    document.getElementById('date-title-input').value = '';
+    document.getElementById('date-val-input').value = '';
+    document.getElementById('date-loop-check').checked = false; 
+    tempDateBg = null;
+}
+
+// 2. 上传背景
+function handleDateBg(inp) {
+    if (inp.files[0]) {
+        processImage(inp.files[0], 800, 0.7, b => {
+            tempDateBg = b;
+            alert("背景已就绪");
+        });
+    }
+}
+
+// 3. 保存纪念日
+function saveDateItem() {
+    const t = document.getElementById('date-title-input').value;
+    const d = document.getElementById('date-val-input').value;
+    const isLoop = document.getElementById('date-loop-check').checked; 
+    const notifyBefore = document.getElementById('notify-day-before').checked;
+    const notifySame = document.getElementById('notify-same-day').checked;
+
+    if (!t || !d) return alert("请填写完整");
+
+    db.dates.push({
+        id: Date.now(),
+        title: t,
+        date: d,
+        bg: tempDateBg,
+        isLoop: isLoop, 
+        notify: { before: notifyBefore, same: notifySame }
+    });
+    
+    saveData();
+    renderDates();
+    closeModal();
+}
+
+// 新增的删除逻辑
+function deleteDate(id) {
+    if (confirm("确定要删除这个纪念日吗？")) {
+        // 过滤掉当前ID的数据
+        db.dates = db.dates.filter(x => x.id !== id);
+        // 保存数据
+        saveData();
+        // 重新渲染列表
+        renderDates();
+    }
+}
+// =================================================
+
+
+// 1. 补全 saveData 函数 (用于保存数据)   <-- 找到这行，贴在它上面
+function saveData() {
+    if (db) {
+        PhoneDB.save(db);
+    }
+}
+
+// ... (后面是 checkDataStructure 和 window.onload) ...
+// 1. 补全 saveData 函数 (用于保存数据)
+// 【替换】增强版数据检查函数 (防止白屏核心)
+function checkDataStructure() {
+    if (!db) db = defaultData;
+
+    // 1. 补全第一层
+    for (let key in defaultData) {
+        if (db[key] === undefined) db[key] = defaultData[key];
+    }
+
+    // 2. 深度补全关键对象 (防止老数据导致启动崩溃)
+    if (!db.settings) db.settings = defaultData.settings;
+    if (!db.fridge) db.fridge = defaultData.fridge;
+    if (!db.fridge.history) db.fridge.history = [];
+    if (!db.fridge.staples) db.fridge.staples = defaultData.fridge.staples; // 防止主食报错
+    
+    // Line 设置补全
+    if (!db.line) db.line = defaultData.line;
+    if (!db.line.stickers) db.line.stickers = [];
+    
+    // 样式补全 (白屏高发区)
+    if (!db.style) db.style = defaultData.style;
+    if (!db.style.apps) db.style.apps = {}; // 最关键的一句！
+    
+    // 小部件补全
+    if (!db.widgets) db.widgets = defaultData.widgets;
+    if (!db.widgets.couple) db.widgets.couple = {};
+    
+    // 其他列表补全
+    if (!db.period) db.period = defaultData.period;
+    if (!db.period.history) db.period.history = [];
+    if (!db.drama) db.drama = defaultData.drama;
+    if (!db.drama.history) db.drama.history = [];
+    if (!db.dates) db.dates = []; // 补全纪念日数组
+}
+// 3. 核心启动命令 (没有这一句，网页加载完不会执行任何操作)
+window.onload = initApp;
+</script>
+</body>
+</html>
